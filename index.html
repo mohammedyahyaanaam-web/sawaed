@@ -852,19 +852,38 @@ function updateHeader(){
 if(currentUser && currentProfile){
 
 $("headerActions").innerHTML=`
-<button class="btn btn-gold" onclick="openDashboard()">لوحة التحكم</button>
+<button class="btn btn-gold" id="dashboardButton" type="button">
+لوحة التحكم
+</button>
 `;
 
 }else{
 
 $("headerActions").innerHTML=`
-<button class="btn btn-outline" onclick="showAuth('login')">دخول</button>
-<button class="btn btn-gold" onclick="showAuth('register')">إنشاء حساب</button>
+<button class="btn btn-outline" onclick="showAuth('login')" type="button">دخول</button>
+<button class="btn btn-gold" onclick="showAuth('register')" type="button">إنشاء حساب</button>
 `;
 
 }
 
 }
+
+/* معالجة زر لوحة التحكم بطريقة مباشرة وثابتة */
+$("headerActions").addEventListener("click",function(event){
+
+const button=event.target.closest("#dashboardButton");
+
+if(!button)return;
+
+event.preventDefault();
+
+if(typeof window.openDashboard==="function"){
+window.openDashboard();
+}else{
+toast("تعذر فتح لوحة التحكم. أعد تحميل الصفحة وحاول مرة أخرى.");
+}
+
+});
 
 
 /* لوحة التحكم */
