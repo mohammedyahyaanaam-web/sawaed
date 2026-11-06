@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#103b30">
+<title>سواعد | منصة التوظيف والخدمات</title>
+
+<style>
+:root{
+--green:#103b30;
+--green2:#195b46;
+--gold:#c9a65b;
+--bg:#f4f7f5;
+--white:#fff;
+--text:#24352e;
+--muted:#82918a;
+--border:#e5ece8;
+--shadow:0 12px 35px rgba(16,59,48,.08);
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Tahoma,Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+header{
+background:linear-gradient(120deg,#0b2e25,#195b46);
+color:white;
+padding:16px 5%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:0 4px 20px #092b2240;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+width:48px;height:48px;border-radius:15px;
+background:linear-gradient(135deg,#e6c77e,#b58c3e);
+color:#103b30;display:grid;place-items:center;
+font-size:27px;font-weight:bold;
+}
+.brand h1{font-size:24px;margin:0}
+.brand small{display:block;color:#d7e8df;font-size:11px;margin-top:4px}
+.header-actions{display:flex;gap:9px;align-items:center}
+
+.btn{
+border:0;border-radius:11px;padding:12px 18px;
+font-weight:bold;transition:.2s;
+}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn-gold{background:var(--gold);color:#17372c}
+.btn-light{background:white;color:var(--green)}
+.btn-green{background:var(--green);color:white}
+.btn-outline{background:transparent;border:1px solid #ffffff70;color:white}
+.btn-danger{background:#fff0f0;color:#b33b3b}
+.btn-small{padding:8px 12px;font-size:12px}
+.full{width:100%}
+
+.container{width:min(1150px,92%);margin:auto}
+
+.hero{
+margin:30px auto;
+padding:48px 6%;
+border-radius:25px;
+color:white;
+background:
+radial-gradient(circle at 10% 20%,#ffffff18 0 100px,transparent 102px),
+linear-gradient(120deg,#103b30,#1d644d);
+position:relative;overflow:hidden;
+}
+.hero h2{font-size:35px;margin:0 0 15px;line-height:1.5}
+.hero p{color:#d8e9df;line-height:2;max-width:650px}
+.hero .highlight{color:#e5c477}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+
+.section-title{
+display:flex;align-items:center;justify-content:space-between;
+gap:12px;margin:28px 0 16px;
+}
+.section-title h2{font-size:21px;margin:0;color:var(--green)}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:17px;
+}
+.card{
+background:white;border:1px solid var(--border);
+border-radius:18px;padding:21px;box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 12px;color:var(--green);font-size:18px}
+.card p{line-height:1.9;color:#63736b;font-size:14px}
+.job-card{display:flex;flex-direction:column;gap:9px}
+.job-card .btn{margin-top:7px}
+
+.badge{
+display:inline-block;background:#eaf4ee;color:#1c684c;
+padding:6px 10px;border-radius:30px;font-size:11px;
+margin:3px 0;
+}
+.meta{color:var(--muted);font-size:12px;line-height:2}
+
+.panel{padding:30px 0}
+
+.form-card{
+width:min(540px,94%);
+margin:35px auto;
+background:white;padding:28px;border-radius:22px;
+box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.form-card h2{color:var(--green);margin-top:0}
+
+.field{margin:15px 0}
+.field label{
+display:block;font-size:13px;font-weight:bold;margin-bottom:8px;
+}
+.field input,.field textarea,.field select{
+width:100%;padding:13px;
+border:1px solid #dce6e0;
+border-radius:11px;background:#fbfdfb;outline:none;
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+border-color:var(--green2);
+box-shadow:0 0 0 3px #195b4615;
+}
+.field textarea{min-height:110px;resize:vertical}
+
+.tabs{
+display:flex;gap:8px;overflow:auto;padding:5px 0 15px;
+}
+.tab{
+border:1px solid var(--border);background:white;
+color:var(--green);padding:11px 16px;border-radius:12px;
+white-space:nowrap;font-weight:bold;
+}
+.tab.active{background:var(--green);color:white}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:12px;margin:20px 0;
+}
+.stat{
+background:white;padding:18px;border-radius:15px;
+border:1px solid var(--border);
+}
+.stat strong{
+display:block;color:var(--green);font-size:25px;margin-bottom:7px;
+}
+.stat span{font-size:12px;color:var(--muted)}
+
+.notice{
+padding:13px;border-radius:12px;margin:12px 0;
+background:#fff8e8;color:#805d19;font-size:13px;line-height:1.8;
+}
+.success{background:#eaf6ed;color:#22633e}
+.error{background:#fff0f0;color:#a83232}
+
+.empty{
+padding:35px;text-align:center;color:var(--muted);
+background:white;border-radius:16px;border:1px dashed #cbd9d0;
+}
+.loading{text-align:center;padding:25px;color:var(--muted)}
+
+footer{
+margin-top:50px;background:#0b2e25;color:#d6e5dc;
+text-align:center;padding:30px 15px;line-height:2;
+}
+footer strong{color:var(--gold)}
+
+.modal-bg{
+position:fixed;inset:0;background:#0008;z-index:30;
+display:flex;align-items:center;justify-content:center;padding:15px;
+}
+.modal{
+background:white;border-radius:20px;padding:25px;
+width:min(500px,100%);max-height:90vh;overflow:auto;
+}
+.modal h3{color:var(--green)}
+
+.toast{
+position:fixed;bottom:20px;left:50%;
+transform:translateX(-50%);
+background:#173e31;color:white;padding:13px 20px;
+border-radius:12px;z-index:100;box-shadow:var(--shadow);
+max-width:90%;text-align:center;
+}
+
+@media(max-width:650px){
+header{padding:12px 4%;flex-wrap:wrap}
+.brand h1{font-size:20px}
+.hero{padding:30px 22px;margin:18px auto}
+.hero h2{font-size:26px}
+.header-actions{width:100%;justify-content:flex-end}
+.header-actions .btn{padding:9px 12px;font-size:12px}
+.form-card{padding:21px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="brand">
+<div class="logo">س</div>
+<div>
+<h1>سواعد</h1>
+<small>منصة التوظيف والخدمات المهنية</small>
+</div>
+</div>
+
+<div class="header-actions" id="headerActions">
+<button class="btn btn-outline" onclick="showAuth('login')">دخول</button>
+<button class="btn btn-gold" onclick="showAuth('register')">إنشاء حساب</button>
+</div>
+</header>
+
+<main class="container">
+
+<!-- الرئيسية -->
+<section id="homePage">
+
+<div class="hero">
+<h2>معاً نصنع فرصاً<br><span class="highlight">ومستقبلاً أفضل</span></h2>
+<p>
+سواعد منصة تجمع أصحاب الأعمال والباحثين عن فرص العمل،
+وتساعد على الوصول إلى الفرص المهنية والخبرات المناسبة
+في مكان واحد.
+</p>
+<div class="hero-actions">
+<button class="btn btn-gold" onclick="showAuth('register')">انضم إلى سواعد</button>
+<button class="btn btn-light" onclick="scrollToJobs()">استعرض الوظائف</button>
+</div>
+</div>
+
+<div class="section-title" id="jobsTitle">
+<h2>أحدث فرص العمل</h2>
+<button class="btn btn-green btn-small" onclick="loadJobs(false)">تحديث الوظائف ↻</button>
+</div>
+
+<div id="publicJobs" class="grid">
+<div class="loading">جاري تحميل الوظائف...</div>
+</div>
+
+</section>
+
+<!-- الدخول والتسجيل -->
+<section id="authPage" class="hidden">
+
+<div class="form-card">
+<button class="btn btn-small btn-light" onclick="showHome()">← الرئيسية</button>
+
+<h2 id="authTitle">إنشاء حساب جديد</h2>
+<div id="authMessage"></div>
+
+<form id="authForm">
+
+<div id="registerFields">
+
+<div class="field">
+<label>الاسم الكامل</label>
+<input id="regName" maxlength="80" placeholder="اكتب اسمك الكامل">
+</div>
+
+<div class="field">
+<label>المدينة</label>
+<input id="regCity" maxlength="60" placeholder="مثال: صنعاء">
+</div>
+
+<div class="field">
+<label>نوع الحساب</label>
+<select id="regRole">
+<option value="worker">باحث عن عمل</option>
+<option value="employer">صاحب عمل / منشأة</option>
+</select>
+</div>
+
+<div class="field">
+<label>المهنة أو مجال العمل</label>
+<input id="regProfession" maxlength="100" placeholder="مثال: محاسب، مهندس، تاجر">
+</div>
+
+</div>
+
+<div class="field">
+<label>البريد الإلكتروني</label>
+<input id="authEmail" type="email" required placeholder="example@email.com">
+</div>
+
+<div class="field">
+<label>كلمة المرور</label>
+<input id="authPassword" type="password" required minlength="6" placeholder="ستة أحرف على الأقل">
+</div>
+
+<button class="btn btn-green full" id="authSubmit" type="submit">إنشاء الحساب</button>
+
+</form>
+
+<p style="text-align:center;font-size:13px;margin-top:20px">
+<span id="switchText">لديك حساب بالفعل؟</span>
+<button id="switchAuth" class="btn btn-small btn-light" onclick="toggleAuth()">تسجيل الدخول</button>
+</p>
+
+<button class="btn btn-outline full" style="color:var(--green);border-color:var(--border)" onclick="googleLogin()">
+المتابعة باستخدام Google
+</button>
+
+</div>
+</section>
+
+<!-- استكمال الملف الشخصي -->
+<section id="profilePage" class="hidden">
+
+<div class="form-card">
+<h2>أكمل ملفك الشخصي</h2>
+<p class="meta">أدخل بياناتك حتى تتمكن من استخدام منصة سواعد.</p>
+<div id="profileMessage"></div>
+
+<form id="profileForm">
+
+<div class="field">
+<label>الاسم الكامل</label>
+<input id="profileName" required maxlength="80">
+</div>
+
+<div class="field">
+<label>المدينة</label>
+<input id="profileCity" required maxlength="60">
+</div>
+
+<div class="field">
+<label>نوع الحساب</label>
+<select id="profileRole">
+<option value="worker">باحث عن عمل</option>
+<option value="employer">صاحب عمل / منشأة</option>
+</select>
+</div>
+
+<div class="field">
+<label>المهنة أو مجال العمل</label>
+<input id="profileProfession" maxlength="100">
+</div>
+
+<button class="btn btn-green full" type="submit">حفظ الملف الشخصي</button>
+
+</form>
+</div>
+</section>
+
+<!-- لوحة التحكم -->
+<section id="dashboardPage" class="hidden panel">
+
+<div class="section-title">
+<div>
+<h2 id="welcomeTitle">مرحباً بك في سواعد</h2>
+<div class="meta" id="userInfo"></div>
+</div>
+<button class="btn btn-danger btn-small" onclick="logout()">تسجيل الخروج</button>
+</div>
+
+<div class="stats">
+<div class="stat">
+<strong id="statJobs">0</strong>
+<span>الوظائف المنشورة</span>
+</div>
+<div class="stat">
+<strong id="statApps">0</strong>
+<span>طلبات التوظيف</span>
+</div>
+</div>
+
+<div class="tabs">
+<button class="tab active" onclick="showTab('browse',this)">استعراض الوظائف</button>
+<button class="tab" id="postTab" onclick="showTab('post',this)">نشر وظيفة</button>
+<button class="tab" onclick="showTab('applications',this)">طلبات التوظيف</button>
+<button class="tab" onclick="showTab('myjobs',this)">وظائفي</button>
+</div>
+
+<div id="browseTab">
+<div class="section-title"><h2>الوظائف المتاحة</h2></div>
+<div id="dashboardJobs" class="grid"></div>
+</div>
+
+<div id="postTabContent" class="hidden">
+
+<div class="form-card" style="margin:15px 0;width:100%">
+<h2>إضافة فرصة عمل جديدة</h2>
+<div id="jobMessage"></div>
+
+<form id="jobForm">
+
+<div class="field">
+<label>المسمى الوظيفي</label>
+<input id="jobTitle" required maxlength="100" placeholder="مثال: موظف مبيعات">
+</div>
+
+<div class="field">
+<label>المدينة</label>
+<input id="jobCity" required maxlength="60" placeholder="مكان العمل">
+</div>
+
+<div class="field">
+<label>نوع الوظيفة</label>
+<select id="jobType">
+<option>دوام كامل</option>
+<option>دوام جزئي</option>
+<option>عمل عن بُعد</option>
+<option>عمل مؤقت</option>
+<option>تدريب</option>
+</select>
+</div>
+
+<div class="field">
+<label>تفاصيل الوظيفة والمتطلبات</label>
+<textarea id="jobDescription" required maxlength="3000" placeholder="اكتب تفاصيل الوظيفة والشروط المطلوبة..."></textarea>
+</div>
+
+<button class="btn btn-green full" type="submit">نشر الوظيفة</button>
+
+</form>
+</div>
+</div>
+
+<div id="applicationsTab" class="hidden">
+<div class="section-title"><h2>طلبات التوظيف</h2></div>
+<div id="applicationsList"></div>
+</div>
+
+<div id="myjobsTab" class="hidden">
+<div class="section-title"><h2>الوظائف التي نشرتها</h2></div>
+<div id="myJobsList" class="grid"></div>
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<strong>سواعد</strong><br>
+فرص تجمعنا، وخبرات تصنع المستقبل.<br>
+جميع الحقوق محفوظة © 2026
+</footer>
+
+<div id="modalRoot"></div>
+<div id="toastRoot"></div>
+
+<script type="module">
+
+import {initializeApp}
+from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword,
+GoogleAuthProvider,
+signInWithRedirect,
+getRedirectResult,
+signOut,
+onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+getDoc,
+doc,
+setDoc,
+updateDoc,
+query,
+where,
+serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+
+/* إعدادات Firebase */
+
+const firebaseConfig = {
+apiKey: "AIzaSyDaqWa0ZDCOP6_uqVs6pGnj54LxJUj8QeA",
+authDomain: "sawaed-7dc28.firebaseapp.com",
+projectId: "sawaed-7dc28",
+storageBucket: "sawaed-7dc28.firebasestorage.app",
+messagingSenderId: "662890696050",
+appId: "1:662890696050:web:36442e2d65cb98eef7e1eb"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const googleProvider = new GoogleAuthProvider();
+
+let currentUser = null;
+let currentProfile = null;
+let authMode = "register";
+let jobsCache = [];
+
+const $ = id => document.getElementById(id);
+
+
+/* أدوات مساعدة */
+
+function escapeHTML(value){
+return String(value ?? "").replace(/[&<>"']/g,c=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#39;"
+})[c]);
+}
+
+function toast(text){
+$("toastRoot").innerHTML =
+`<div class="toast">${escapeHTML(text)}</div>`;
+setTimeout(()=>{$("toastRoot").innerHTML="";},3500);
+}
+
+function message(id,text,type="notice"){
+$(id).innerHTML =
+`<div class="notice ${type}">${escapeHTML(text)}</div>`;
+}
+
+function errorText(error){
+
+const code=error?.code||"";
+
+const errors={
+"auth/email-already-in-use":"هذا البريد مسجل بالفعل.",
+"auth/invalid-email":"البريد الإلكتروني غير صحيح.",
+"auth/weak-password":"كلمة المرور ضعيفة. استخدم ستة أحرف على الأقل.",
+"auth/user-not-found":"لا يوجد حساب بهذا البريد.",
+"auth/wrong-password":"كلمة المرور غير صحيحة.",
+"auth/invalid-credential":"بيانات الدخول غير صحيحة.",
+"auth/network-request-failed":"تحقق من اتصال الإنترنت.",
+"auth/unauthorized-domain":"أضف نطاق الموقع إلى النطاقات المصرح بها في Firebase.",
+"permission-denied":"ليس لديك إذن لتنفيذ هذه العملية. تحقق من قواعد الحماية.",
+"unavailable":"الخدمة غير متاحة حالياً. حاول مرة أخرى."
+};
+
+return errors[code]||("حدث خطأ: "+(error?.message||"حاول مرة أخرى."));
+}
+
+function showOnly(page){
+
+["homePage","authPage","profilePage","dashboardPage"].forEach(id=>{
+$(id).classList.add("hidden");
+});
+
+$(page).classList.remove("hidden");
+}
+
+
+/* التنقل */
+
+window.showHome=function(){
+showOnly("homePage");
+};
+
+window.showAuth=function(mode){
+
+authMode=mode;
+
+showOnly("authPage");
+
+$("authTitle").textContent=
+mode==="login"?"تسجيل الدخول":"إنشاء حساب جديد";
+
+$("authSubmit").textContent=
+mode==="login"?"دخول":"إنشاء الحساب";
+
+$("registerFields").classList.toggle("hidden",mode==="login");
+
+$("regName").required=mode==="register";
+$("regCity").required=mode==="register";
+
+$("switchText").textContent=
+mode==="login"?"ليس لديك حساب؟":"لديك حساب بالفعل؟";
+
+$("switchAuth").textContent=
+mode==="login"?"إنشاء حساب":"تسجيل الدخول";
+
+$("authMessage").innerHTML="";
+};
+
+window.toggleAuth=function(){
+showAuth(authMode==="login"?"register":"login");
+};
+
+window.scrollToJobs=function(){
+$("jobsTitle").scrollIntoView({behavior:"smooth"});
+};
+
+
+/* الملفات الشخصية */
+
+async function getProfile(uid){
+
+const snap=await getDoc(doc(db,"profiles",uid));
+
+return snap.exists()?snap.data():null;
+
+}
+
+function showProfileSetup(){
+
+showOnly("profilePage");
+
+if(currentUser && currentUser.displayName){
+$("profileName").value=currentUser.displayName;
+}
+
+}
+
+$("profileForm").addEventListener("submit",async e=>{
+
+e.preventDefault();
+
+if(!currentUser)return;
+
+const name=$("profileName").value.trim();
+const city=$("profileCity").value.trim();
+const role=$("profileRole").value;
+const profession=$("profileProfession").value.trim();
+
+if(!name||!city){
+message("profileMessage","أدخل الاسم والمدينة.","error");
+return;
+}
+
+try{
+
+await setDoc(doc(db,"profiles",currentUser.uid),{
+
+uid:currentUser.uid,
+name,
+city,
+role,
+profession,
+bio:"",
+createdAt:serverTimestamp()
+
+});
+
+currentProfile=await getProfile(currentUser.uid);
+
+toast("تم حفظ الملف الشخصي بنجاح.");
+
+updateHeader();
+
+openDashboard();
+
+}catch(error){
+
+message("profileMessage",errorText(error),"error");
+
+}
+
+});
+
+
+/* إنشاء الحساب وتسجيل الدخول */
+
+$("authForm").addEventListener("submit",async e=>{
+
+e.preventDefault();
+
+const email=$("authEmail").value.trim();
+const password=$("authPassword").value;
+
+try{
+
+if(authMode==="login"){
+
+await signInWithEmailAndPassword(auth,email,password);
+
+}else{
+
+const name=$("regName").value.trim();
+const city=$("regCity").value.trim();
+const role=$("regRole").value;
+const profession=$("regProfession").value.trim();
+
+if(!name||!city){
+message("authMessage","أدخل الاسم والمدينة.","error");
+return;
+}
+
+const credential=await createUserWithEmailAndPassword(auth,email,password);
+
+currentUser=credential.user;
+
+await setDoc(doc(db,"profiles",currentUser.uid),{
+
+uid:currentUser.uid,
+name,
+city,
+role,
+profession,
+bio:"",
+createdAt:serverTimestamp()
+
+});
+
+currentProfile=await getProfile(currentUser.uid);
+
+toast("مرحباً بك في سواعد.");
+
+openDashboard();
+
+}
+
+}catch(error){
+
+message("authMessage",errorText(error),"error");
+
+}
+
+});
+
+
+/* Google */
+
+window.googleLogin=async function(){
+
+try{
+
+await signInWithRedirect(auth,googleProvider);
+
+}catch(error){
+
+toast(errorText(error));
+
+}
+
+};
+
+async function handleGoogleResult(){
+
+try{
+
+const result=await getRedirectResult(auth);
+
+if(result && result.user){
+
+currentUser=result.user;
+
+currentProfile=await getProfile(currentUser.uid);
+
+if(!currentProfile){
+
+showProfileSetup();
+
+}else{
+
+openDashboard();
+
+}
+
+}
+
+}catch(error){
+
+toast(errorText(error));
+
+}
+
+}
+
+
+/* تسجيل الخروج */
+
+window.logout=async function(){
+
+try{
+
+await signOut(auth);
+
+currentUser=null;
+currentProfile=null;
+
+showHome();
+
+updateHeader();
+
+toast("تم تسجيل الخروج.");
+
+}catch(error){
+
+toast(errorText(error));
+
+}
+
+};
+
+
+/* متابعة حالة المستخدم */
+
+onAuthStateChanged(auth,async user=>{
+
+currentUser=user;
+currentProfile=null;
+
+if(user){
+
+try{
+
+currentProfile=await getProfile(user.uid);
+
+updateHeader();
+
+if(currentProfile){
+
+openDashboard();
+
+}else{
+
+showProfileSetup();
+
+}
+
+}catch(error){
+
+toast(errorText(error));
+
+}
+
+}else{
+
+updateHeader();
+
+showHome();
+
+}
+
+});
+
+
+function updateHeader(){
+
+if(currentUser && currentProfile){
+
+$("headerActions").innerHTML=`
+<button class="btn btn-gold" onclick="openDashboard()">لوحة التحكم</button>
+`;
+
+}else{
+
+$("headerActions").innerHTML=`
+<button class="btn btn-outline" onclick="showAuth('login')">دخول</button>
+<button class="btn btn-gold" onclick="showAuth('register')">إنشاء حساب</button>
+`;
+
+}
+
+}
+
+
+/* لوحة التحكم */
+
+window.openDashboard=async function(){
+
+if(!currentUser)return showAuth("login");
+
+if(!currentProfile)return showProfileSetup();
+
+showOnly("dashboardPage");
+
+$("welcomeTitle").textContent="مرحباً، "+currentProfile.name;
+
+$("userInfo").textContent=
+(currentProfile.role==="employer"?"صاحب عمل":"باحث عن عمل")
++" • "+(currentProfile.city||"");
+
+$("postTab").classList.toggle(
+"hidden",
+currentProfile.role!=="employer"
+);
+
+showTab("browse",document.querySelector(".tab"));
+
+await loadJobs(true);
+
+await loadStats();
+
+};
+
+
+/* التبويبات */
+
+window.showTab=function(name,button){
+
+["browse","post","applications","myjobs"].forEach(tab=>{
+
+const element=tab==="post"?"postTabContent":tab+"Tab";
+
+$(element).classList.toggle("hidden",tab!==name);
+
+});
+
+document.querySelectorAll(".tab").forEach(x=>{
+x.classList.remove("active");
+});
+
+if(button)button.classList.add("active");
+
+if(name==="browse")loadJobs(true);
+
+if(name==="applications")loadApplications();
+
+if(name==="myjobs")loadMyJobs();
+
+};
+
+
+/* الوظائف */
+
+function sortNewest(items){
+
+return items.sort((a,b)=>{
+
+const ta=a.createdAt?.seconds||0;
+const tb=b.createdAt?.seconds||0;
+
+return tb-ta;
+
+});
+
+}
+
+async function loadJobs(dashboard=false){
+
+const target=dashboard?"dashboardJobs":"publicJobs";
+
+$(target).innerHTML=
+'<div class="loading">جاري تحميل الوظائف...</div>';
+
+try{
+
+const q=query(
+collection(db,"jobs"),
+where("status","==","published")
+);
+
+const snap=await getDocs(q);
+
+jobsCache=sortNewest(
+snap.docs.map(d=>({id:d.id,...d.data()}))
+);
+
+renderJobs(target,jobsCache);
+
+}catch(error){
+
+$(target).innerHTML=
+`<div class="empty">${escapeHTML(errorText(error))}</div>`;
+
+}
+
+}
+
+function renderJobs(target,jobs){
+
+if(!jobs.length){
+
+$(target).innerHTML=
+'<div class="empty">لا توجد وظائف منشورة حالياً.</div>';
+
+return;
+
+}
+
+$(target).innerHTML=jobs.map(job=>`
+
+<div class="card job-card">
+
+<div>
+<span class="badge">${escapeHTML(job.type||"فرصة عمل")}</span>
+</div>
+
+<h3>${escapeHTML(job.title)}</h3>
+
+<div class="meta">📍 ${escapeHTML(job.city||"غير محدد")}</div>
+
+<div class="meta">🏢 ${escapeHTML(job.employerName||"جهة عمل")}</div>
+
+<p>${escapeHTML((job.description||"").slice(0,180))}${(job.description||"").length>180?"...":""}</p>
+
+<button class="btn btn-green" onclick="applyJob('${job.id}')">
+عرض الوظيفة والتقديم
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* التقديم على وظيفة */
+
+window.applyJob=async function(jobId){
+
+if(!currentUser){
+
+toast("سجل الدخول أولاً للتقديم.");
+
+showAuth("login");
+
+return;
+
+}
+
+if(!currentProfile){
+
+showProfileSetup();
+
+return;
+
+}
+
+if(currentProfile.role!=="worker"){
+
+toast("التقديم متاح لحسابات الباحثين عن عمل.");
+
+return;
+
+}
+
+const job=jobsCache.find(j=>j.id===jobId);
+
+if(!job)return toast("تعذر العثور على الوظيفة.");
+
+$("modalRoot").innerHTML=`
+
+<div class="modal-bg" onclick="closeModal(event)">
+
+<div class="modal" onclick="event.stopPropagation()">
+
+<h3>${escapeHTML(job.title)}</h3>
+
+<p class="meta">📍 ${escapeHTML(job.city||"")}</p>
+
+<p>${escapeHTML(job.description||"")}</p>
+
+<div class="field">
+
+<label>رسالة إلى صاحب العمل</label>
+
+<textarea id="applicationMessage" maxlength="1500"
+placeholder="اكتب نبذة مختصرة عن اهتمامك بالوظيفة وخبرتك..."></textarea>
+
+</div>
+
+<button class="btn btn-green full" onclick="sendApplication('${job.id}')">
+إرسال طلب التقديم
+</button>
+
+<button class="btn btn-light full" style="margin-top:9px" onclick="closeModal()">
+إغلاق
+</button>
+
+</div>
+</div>
+
+`;
+
+};
+
+
+window.closeModal=function(event){
+
+if(event && event.target!==$("modalRoot").firstElementChild)return;
+
+$("modalRoot").innerHTML="";
+
+};
+
+
+window.sendApplication=async function(jobId){
+
+const job=jobsCache.find(j=>j.id===jobId);
+
+if(!job||!currentUser||!currentProfile)return;
+
+try{
+
+await addDoc(collection(db,"applications"),{
+
+workerId:currentUser.uid,
+employerId:job.employerId,
+jobId:job.id,
+jobTitle:job.title,
+workerName:currentProfile.name,
+message:$("applicationMessage").value.trim(),
+status:"pending",
+createdAt:serverTimestamp()
+
+});
+
+closeModal();
+
+toast("تم إرسال طلب التقديم بنجاح.");
+
+loadStats();
+
+}catch(error){
+
+toast(errorText(error));
+
+}
+
+};
+
+
+/* نشر وظيفة */
+
+$("jobForm").addEventListener("submit",async e=>{
+
+e.preventDefault();
+
+if(!currentUser||!currentProfile||currentProfile.role!=="employer"){
+
+toast("نشر الوظائف متاح لأصحاب العمل فقط.");
+
+return;
+
+}
+
+try{
+
+await addDoc(collection(db,"jobs"),{
+
+title:$("jobTitle").value.trim(),
+city:$("jobCity").value.trim(),
+type:$("jobType").value,
+description:$("jobDescription").value.trim(),
+employerId:currentUser.uid,
+employerName:currentProfile.name,
+status:"published",
+createdAt:serverTimestamp()
+
+});
+
+$("jobForm").reset();
+
+message("jobMessage","تم نشر الوظيفة بنجاح.","success");
+
+toast("تم نشر الوظيفة.");
+
+loadJobs(true);
+
+loadStats();
+
+}catch(error){
+
+message("jobMessage",errorText(error),"error");
+
+}
+
+});
+
+
+/* وظائف صاحب العمل */
+
+async function loadMyJobs(){
+
+if(!currentUser)return;
+
+$("myJobsList").innerHTML=
+'<div class="loading">جاري التحميل...</div>';
+
+try{
+
+const q=query(
+collection(db,"jobs"),
+where("employerId","==",currentUser.uid)
+);
+
+const snap=await getDocs(q);
+
+const list=sortNewest(
+snap.docs.map(d=>({id:d.id,...d.data()}))
+);
+
+if(!list.length){
+
+$("myJobsList").innerHTML=
+'<div class="empty">لم تنشر أي وظيفة حتى الآن.</div>';
+
+return;
+
+}
+
+$("myJobsList").innerHTML=list.map(j=>`
+
+<div class="card">
+
+<span class="badge">منشورة</span>
+
+<h3>${escapeHTML(j.title)}</h3>
+
+<div class="meta">📍 ${escapeHTML(j.city||"")}</div>
+
+<p>${escapeHTML(j.description||"")}</p>
+
+</div>
+
+`).join("");
+
+}catch(error){
+
+$("myJobsList").innerHTML=
+`<div class="empty">${escapeHTML(errorText(error))}</div>`;
+
+}
+
+}
+
+
+/* طلبات التوظيف */
+
+async function loadApplications(){
+
+if(!currentUser||!currentProfile)return;
+
+$("applicationsList").innerHTML=
+'<div class="loading">جاري التحميل...</div>';
+
+try{
+
+const field=currentProfile.role==="worker"?"workerId":"employerId";
+
+const q=query(
+collection(db,"applications"),
+where(field,"==",currentUser.uid)
+);
+
+const snap=await getDocs(q);
+
+const list=sortNewest(
+snap.docs.map(d=>({id:d.id,...d.data()}))
+);
+
+if(!list.length){
+
+$("applicationsList").innerHTML=
+'<div class="empty">لا توجد طلبات توظيف حتى الآن.</div>';
+
+return;
+
+}
+
+$("applicationsList").innerHTML=list.map(a=>`
+
+<div class="card" style="margin-bottom:13px">
+
+<h3>${escapeHTML(a.jobTitle)}</h3>
+
+<div class="meta">المتقدم: ${escapeHTML(a.workerName||"")}</div>
+
+<p>${escapeHTML(a.message||"لا توجد رسالة مرفقة.")}</p>
+
+<span class="badge">
+${a.status==="pending"?"قيد المراجعة":
+a.status==="accepted"?"تم قبول الطلب":
+a.status==="rejected"?"تم رفض الطلب":
+escapeHTML(a.status)}
+</span>
+
+${currentProfile.role==="employer" && a.status==="pending"?`
+
+<button class="btn btn-green btn-small"
+onclick="changeApplication('${a.id}','accepted')">
+قبول الطلب
+</button>
+
+<button class="btn btn-danger btn-small"
+onclick="changeApplication('${a.id}','rejected')">
+رفض الطلب
+</button>
+
+`:""}
+
+</div>
+
+`).join("");
+
+}catch(error){
+
+$("applicationsList").innerHTML=
+`<div class="empty">${escapeHTML(errorText(error))}</div>`;
+
+}
+
+}
+
+
+window.changeApplication=async function(id,status){
+
+try{
+
+await updateDoc(doc(db,"applications",id),{
+status:status
+});
+
+toast("تم تحديث حالة الطلب.");
+
+loadApplications();
+
+}catch(error){
+
+toast(errorText(error));
+
+}
+
+};
+
+
+/* الإحصائيات */
+
+async function loadStats(){
+
+if(!currentUser||!currentProfile)return;
+
+try{
+
+if(currentProfile.role==="employer"){
+
+const q=query(
+collection(db,"jobs"),
+where("employerId","==",currentUser.uid)
+);
+
+const snap=await getDocs(q);
+
+$("statJobs").textContent=snap.size;
+
+}else{
+
+$("statJobs").textContent="—";
+
+}
+
+const field=currentProfile.role==="worker"?"workerId":"employerId";
+
+const a=query(
+collection(db,"applications"),
+where(field,"==",currentUser.uid)
+);
+
+const as=await getDocs(a);
+
+$("statApps").textContent=as.size;
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
+
+/* بدء التشغيل */
+
+handleGoogleResult();
+
+loadJobs(false);
+
+</script>
+
+</body>
+</html>
