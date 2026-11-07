@@ -9,14 +9,16 @@
 <style>
 :root{
 --green:#103b30;
---green2:#195b46;
+--green2:#185342;
 --gold:#c9a65b;
---bg:#f4f7f5;
+--bg:#f4f6f3;
 --white:#fff;
---text:#24352e;
---muted:#82918a;
---border:#e5ece8;
---shadow:0 12px 35px rgba(16,59,48,.08);
+--text:#26352f;
+--muted:#718078;
+--border:#e4eae5;
+--red:#c0392b;
+--blue:#2876a8;
+--shadow:0 8px 25px rgba(16,59,48,.08);
 }
 *{box-sizing:border-box}
 body{
@@ -24,476 +26,504 @@ margin:0;
 font-family:Tahoma,Arial,sans-serif;
 background:var(--bg);
 color:var(--text);
+line-height:1.7;
 }
-button,input,textarea,select{font:inherit}
+button,input,select,textarea{font-family:inherit}
 button{cursor:pointer}
-.hidden{display:none!important}
-
-header{
-background:linear-gradient(120deg,#0b2e25,#195b46);
+.topbar{
+background:var(--green);
 color:white;
-padding:16px 5%;
+padding:13px 5%;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:15px;
-position:sticky;
-top:0;
-z-index:10;
-box-shadow:0 4px 20px #092b2240;
+gap:12px;
+flex-wrap:wrap;
 }
-.brand{display:flex;align-items:center;gap:12px}
-.logo{
-width:48px;height:48px;border-radius:15px;
-background:linear-gradient(135deg,#e6c77e,#b58c3e);
-color:#103b30;display:grid;place-items:center;
-font-size:27px;font-weight:bold;
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:25px;
+font-weight:bold;
 }
-.brand h1{font-size:24px;margin:0}
-.brand small{display:block;color:#d7e8df;font-size:11px;margin-top:4px}
-.header-actions{display:flex;gap:9px;align-items:center}
-
+.brand-icon{
+width:43px;height:43px;
+border:2px solid var(--gold);
+border-radius:13px;
+display:grid;place-items:center;
+color:var(--gold);
+font-size:23px;
+}
+.top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.container{width:min(1150px,94%);margin:auto}
 .btn{
-border:0;border-radius:11px;padding:12px 18px;
-font-weight:bold;transition:.2s;
+border:0;
+padding:10px 17px;
+border-radius:9px;
+font-size:14px;
+font-weight:bold;
+transition:.2s;
 }
 .btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
-.btn-gold{background:var(--gold);color:#17372c}
-.btn-light{background:white;color:var(--green)}
-.btn-green{background:var(--green);color:white}
-.btn-outline{background:transparent;border:1px solid #ffffff70;color:white}
-.btn-danger{background:#fff0f0;color:#b33b3b}
-.btn-small{padding:8px 12px;font-size:12px}
-.full{width:100%}
-
-.container{width:min(1150px,92%);margin:auto}
-
+.btn-primary{background:var(--green);color:white}
+.btn-gold{background:var(--gold);color:#17251f}
+.btn-light{background:#edf2ee;color:var(--green)}
+.btn-danger{background:#fae9e7;color:var(--red)}
+.btn-blue{background:#e7f1f8;color:var(--blue)}
+.btn-outline{border:1px solid rgba(255,255,255,.5);color:white;background:transparent}
 .hero{
-margin:30px auto;
-padding:48px 6%;
-border-radius:25px;
+background:linear-gradient(125deg,#103b30,#1d5c47);
 color:white;
-background:
-radial-gradient(circle at 10% 20%,#ffffff18 0 100px,transparent 102px),
-linear-gradient(120deg,#103b30,#1d644d);
-position:relative;overflow:hidden;
+padding:55px 20px;
+text-align:center;
+position:relative;
+overflow:hidden;
 }
-.hero h2{font-size:35px;margin:0 0 15px;line-height:1.5}
-.hero p{color:#d8e9df;line-height:2;max-width:650px}
-.hero .highlight{color:#e5c477}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-
+.hero:after{
+content:"";
+position:absolute;
+width:260px;height:260px;
+border:1px solid rgba(255,255,255,.1);
+border-radius:50%;
+top:-130px;right:-50px;
+}
+.hero h1{font-size:clamp(27px,5vw,43px);margin:0 0 12px}
+.hero p{color:#dce9e1;margin:0 auto 24px;max-width:650px}
+.hero .btn{padding:13px 25px;font-size:15px}
+.section{padding:30px 0}
 .section-title{
 display:flex;align-items:center;justify-content:space-between;
-gap:12px;margin:28px 0 16px;
+gap:10px;flex-wrap:wrap;margin-bottom:17px
 }
-.section-title h2{font-size:21px;margin:0;color:var(--green)}
-
+.section-title h2{margin:0;color:var(--green);font-size:22px}
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:17px;
 }
 .card{
-background:white;border:1px solid var(--border);
-border-radius:18px;padding:21px;box-shadow:var(--shadow);
+background:white;
+border:1px solid var(--border);
+border-radius:15px;
+padding:19px;
+box-shadow:var(--shadow);
 }
-.card h3{margin:0 0 12px;color:var(--green);font-size:18px}
-.card p{line-height:1.9;color:#63736b;font-size:14px}
-.job-card{display:flex;flex-direction:column;gap:9px}
-.job-card .btn{margin-top:7px}
-
-.badge{
-display:inline-block;background:#eaf4ee;color:#1c684c;
-padding:6px 10px;border-radius:30px;font-size:11px;
-margin:3px 0;
+.card h3{margin:0 0 8px;color:var(--green);font-size:18px}
+.muted{color:var(--muted);font-size:13px}
+.job-meta{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.tag{
+background:#edf4ef;
+color:#285744;
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
 }
-.meta{color:var(--muted);font-size:12px;line-height:2}
-
-.panel{padding:30px 0}
-
-.form-card{
-width:min(540px,94%);
-margin:35px auto;
-background:white;padding:28px;border-radius:22px;
-box-shadow:var(--shadow);border:1px solid var(--border);
+.card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.hidden{display:none!important}
+.page{padding:25px 0 45px}
+.panel{
+background:white;
+border:1px solid var(--border);
+border-radius:16px;
+padding:22px;
+box-shadow:var(--shadow);
+margin-bottom:18px;
 }
-.form-card h2{color:var(--green);margin-top:0}
-
-.field{margin:15px 0}
-.field label{
-display:block;font-size:13px;font-weight:bold;margin-bottom:8px;
-}
-.field input,.field textarea,.field select{
-width:100%;padding:13px;
-border:1px solid #dce6e0;
-border-radius:11px;background:#fbfdfb;outline:none;
-}
-.field input:focus,.field textarea:focus,.field select:focus{
-border-color:var(--green2);
-box-shadow:0 0 0 3px #195b4615;
-}
-.field textarea{min-height:110px;resize:vertical}
-
-.tabs{
-display:flex;gap:8px;overflow:auto;padding:5px 0 15px;
-}
-.tab{
-border:1px solid var(--border);background:white;
-color:var(--green);padding:11px 16px;border-radius:12px;
-white-space:nowrap;font-weight:bold;
-}
-.tab.active{background:var(--green);color:white}
-
-.stats{
+.panel h2,.panel h3{color:var(--green);margin-top:0}
+.form-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:12px;margin:20px 0;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:13px;
 }
-.stat{
-background:white;padding:18px;border-radius:15px;
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-size:13px;font-weight:bold;color:#43534b}
+input,select,textarea{
+width:100%;
+padding:12px;
+border:1px solid #dce4dd;
+border-radius:9px;
+background:#fff;
+color:var(--text);
+font-size:14px;
+outline:none;
+}
+input:focus,select:focus,textarea:focus{
+border-color:var(--gold);
+box-shadow:0 0 0 3px rgba(201,166,91,.13);
+}
+textarea{min-height:110px;resize:vertical}
+.form-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+.auth-wrap{
+max-width:500px;
+margin:35px auto;
+padding:0 12px;
+}
+.auth-box{
+background:white;
+padding:25px;
+border-radius:17px;
+box-shadow:var(--shadow);
 border:1px solid var(--border);
 }
-.stat strong{
-display:block;color:var(--green);font-size:25px;margin-bottom:7px;
+.auth-box h2{text-align:center;color:var(--green);margin-top:0}
+.auth-switch{text-align:center;margin-top:15px;font-size:14px}
+.text-button{
+border:0;background:none;color:var(--green);
+font-weight:bold;text-decoration:underline;
 }
+.tabs{
+display:flex;gap:8px;flex-wrap:wrap;
+margin:15px 0 20px;
+}
+.tab{
+border:1px solid var(--border);
+background:white;
+color:var(--green);
+padding:10px 15px;
+border-radius:9px;
+font-weight:bold;
+}
+.tab.active{background:var(--green);color:white;border-color:var(--green)}
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+gap:12px;margin-bottom:20px
+}
+.stat{
+background:white;border:1px solid var(--border);
+border-radius:13px;padding:15px;text-align:center;
+}
+.stat strong{display:block;font-size:25px;color:var(--green)}
 .stat span{font-size:12px;color:var(--muted)}
-
 .notice{
-padding:13px;border-radius:12px;margin:12px 0;
-background:#fff8e8;color:#805d19;font-size:13px;line-height:1.8;
+padding:12px 15px;border-radius:9px;
+margin:12px 0;font-size:14px;
 }
-.success{background:#eaf6ed;color:#22633e}
-.error{background:#fff0f0;color:#a83232}
-
+.notice.error{background:#fff0ed;color:#a52d20}
+.notice.success{background:#e9f6ed;color:#21623c}
+.notice.info{background:#edf4fa;color:#285d80}
 .empty{
-padding:35px;text-align:center;color:var(--muted);
-background:white;border-radius:16px;border:1px dashed #cbd9d0;
-}
-.loading{text-align:center;padding:25px;color:var(--muted)}
-
-footer{
-margin-top:50px;background:#0b2e25;color:#d6e5dc;
-text-align:center;padding:30px 15px;line-height:2;
-}
-footer strong{color:var(--gold)}
-
-.modal-bg{
-position:fixed;inset:0;background:#0008;z-index:30;
-display:flex;align-items:center;justify-content:center;padding:15px;
+text-align:center;padding:30px 15px;
+color:var(--muted);background:white;
+border:1px dashed #ccd8cf;border-radius:12px
 }
 .modal{
-background:white;border-radius:20px;padding:25px;
-width:min(500px,100%);max-height:90vh;overflow:auto;
+position:fixed;inset:0;background:rgba(0,0,0,.55);
+z-index:1000;display:none;align-items:center;
+justify-content:center;padding:15px;
 }
-.modal h3{color:var(--green)}
-
-.toast{
-position:fixed;bottom:20px;left:50%;
-transform:translateX(-50%);
-background:#173e31;color:white;padding:13px 20px;
-border-radius:12px;z-index:100;box-shadow:var(--shadow);
-max-width:90%;text-align:center;
+.modal.show{display:flex}
+.modal-box{
+background:white;border-radius:16px;
+width:min(560px,100%);max-height:90vh;
+overflow:auto;padding:22px;position:relative
 }
-
+.modal-close{
+position:absolute;left:15px;top:12px;
+border:0;background:#edf2ee;border-radius:50%;
+width:34px;height:34px;font-size:20px;
+}
+.footer{
+background:#0c2d25;color:#dce9e1;
+text-align:center;padding:23px 12px;
+font-size:13px;margin-top:30px
+}
+.loading{text-align:center;padding:20px;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:18px 0}
 @media(max-width:650px){
-header{padding:12px 4%;flex-wrap:wrap}
-.brand h1{font-size:20px}
-.hero{padding:30px 22px;margin:18px auto}
-.hero h2{font-size:26px}
-.header-actions{width:100%;justify-content:flex-end}
-.header-actions .btn{padding:9px 12px;font-size:12px}
-.form-card{padding:21px}
+.topbar{padding:12px 4%}
+.brand{font-size:21px}
+.form-grid{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+.panel{padding:16px}
+.hero{padding:40px 15px}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="brand">
-<div class="logo">س</div>
-<div>
-<h1>سواعد</h1>
-<small>منصة التوظيف والخدمات المهنية</small>
-</div>
-</div>
-
-<div class="header-actions" id="headerActions">
-<button class="btn btn-outline" onclick="showAuth('login')">دخول</button>
-<button class="btn btn-gold" onclick="showAuth('register')">إنشاء حساب</button>
-</div>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-icon">س</div>
+    <span>سواعد</span>
+  </div>
+  <div class="top-actions" id="headerActions">
+    <button class="btn btn-outline" onclick="showAuth()">دخول / إنشاء حساب</button>
+  </div>
 </header>
 
-<main class="container">
+<main id="homePage">
+  <section class="hero">
+    <div class="container">
+      <h1>سواعد تجمع أصحاب الأعمال والباحثين عن فرص</h1>
+      <p>منصة للتوظيف والخدمات، تساعد أصحاب الأعمال على الوصول إلى الكفاءات، وتمنح الباحثين عن العمل فرصة لعرض مهاراتهم والوصول إلى الوظائف.</p>
+      <button class="btn btn-gold" onclick="showAuth()">ابدأ الآن</button>
+    </div>
+  </section>
 
-<!-- الرئيسية -->
-<section id="homePage">
-
-<div class="hero">
-<h2>معاً نصنع فرصاً<br><span class="highlight">ومستقبلاً أفضل</span></h2>
-<p>
-سواعد منصة تجمع أصحاب الأعمال والباحثين عن فرص العمل،
-وتساعد على الوصول إلى الفرص المهنية والخبرات المناسبة
-في مكان واحد.
-</p>
-<div class="hero-actions">
-<button class="btn btn-gold" onclick="showAuth('register')">انضم إلى سواعد</button>
-<button class="btn btn-light" onclick="scrollToJobs()">استعرض الوظائف</button>
-</div>
-</div>
-
-<div class="section-title" id="jobsTitle">
-<h2>أحدث فرص العمل</h2>
-<button class="btn btn-green btn-small" onclick="loadJobs(false)">تحديث الوظائف ↻</button>
-</div>
-
-<div id="publicJobs" class="grid">
-<div class="loading">جاري تحميل الوظائف...</div>
-</div>
-
-</section>
-
-<!-- الدخول والتسجيل -->
-<section id="authPage" class="hidden">
-
-<div class="form-card">
-<button class="btn btn-small btn-light" onclick="showHome()">← الرئيسية</button>
-
-<h2 id="authTitle">إنشاء حساب جديد</h2>
-<div id="authMessage"></div>
-
-<form id="authForm">
-
-<div id="registerFields">
-
-<div class="field">
-<label>الاسم الكامل</label>
-<input id="regName" maxlength="80" placeholder="اكتب اسمك الكامل">
-</div>
-
-<div class="field">
-<label>المدينة</label>
-<input id="regCity" maxlength="60" placeholder="مثال: صنعاء">
-</div>
-
-<div class="field">
-<label>نوع الحساب</label>
-<select id="regRole">
-<option value="worker">باحث عن عمل</option>
-<option value="employer">صاحب عمل / منشأة</option>
-</select>
-</div>
-
-<div class="field">
-<label>المهنة أو مجال العمل</label>
-<input id="regProfession" maxlength="100" placeholder="مثال: محاسب، مهندس، تاجر">
-</div>
-
-</div>
-
-<div class="field">
-<label>البريد الإلكتروني</label>
-<input id="authEmail" type="email" required placeholder="example@email.com">
-</div>
-
-<div class="field">
-<label>كلمة المرور</label>
-<input id="authPassword" type="password" required minlength="6" placeholder="ستة أحرف على الأقل">
-</div>
-
-<button class="btn btn-green full" id="authSubmit" type="submit">إنشاء الحساب</button>
-
-</form>
-
-<p style="text-align:center;font-size:13px;margin-top:20px">
-<span id="switchText">لديك حساب بالفعل؟</span>
-<button id="switchAuth" class="btn btn-small btn-light" onclick="toggleAuth()">تسجيل الدخول</button>
-</p>
-
-<button class="btn btn-outline full" style="color:var(--green);border-color:var(--border)" onclick="googleLogin()">
-المتابعة باستخدام Google
-</button>
-
-</div>
-</section>
-
-<!-- استكمال الملف الشخصي -->
-<section id="profilePage" class="hidden">
-
-<div class="form-card">
-<h2>أكمل ملفك الشخصي</h2>
-<p class="meta">أدخل بياناتك حتى تتمكن من استخدام منصة سواعد.</p>
-<div id="profileMessage"></div>
-
-<form id="profileForm">
-
-<div class="field">
-<label>الاسم الكامل</label>
-<input id="profileName" required maxlength="80">
-</div>
-
-<div class="field">
-<label>المدينة</label>
-<input id="profileCity" required maxlength="60">
-</div>
-
-<div class="field">
-<label>نوع الحساب</label>
-<select id="profileRole">
-<option value="worker">باحث عن عمل</option>
-<option value="employer">صاحب عمل / منشأة</option>
-</select>
-</div>
-
-<div class="field">
-<label>المهنة أو مجال العمل</label>
-<input id="profileProfession" maxlength="100">
-</div>
-
-<button class="btn btn-green full" type="submit">حفظ الملف الشخصي</button>
-
-</form>
-</div>
-</section>
-
-<!-- لوحة التحكم -->
-<section id="dashboardPage" class="hidden panel">
-
-<div class="section-title">
-<div>
-<h2 id="welcomeTitle">مرحباً بك في سواعد</h2>
-<div class="meta" id="userInfo"></div>
-</div>
-<button class="btn btn-danger btn-small" onclick="logout()">تسجيل الخروج</button>
-</div>
-
-<div class="stats">
-<div class="stat">
-<strong id="statJobs">0</strong>
-<span>الوظائف المنشورة</span>
-</div>
-<div class="stat">
-<strong id="statApps">0</strong>
-<span>طلبات التوظيف</span>
-</div>
-</div>
-
-<div class="tabs">
-<button class="tab active" onclick="showTab('browse',this)">استعراض الوظائف</button>
-<button class="tab" id="postTab" onclick="showTab('post',this)">نشر وظيفة</button>
-<button class="tab" onclick="showTab('applications',this)">طلبات التوظيف</button>
-<button class="tab" onclick="showTab('myjobs',this)">وظائفي</button>
-</div>
-
-<div id="browseTab">
-<div class="section-title"><h2>الوظائف المتاحة</h2></div>
-<div id="dashboardJobs" class="grid"></div>
-</div>
-
-<div id="postTabContent" class="hidden">
-
-<div class="form-card" style="margin:15px 0;width:100%">
-<h2>إضافة فرصة عمل جديدة</h2>
-<div id="jobMessage"></div>
-
-<form id="jobForm">
-
-<div class="field">
-<label>المسمى الوظيفي</label>
-<input id="jobTitle" required maxlength="100" placeholder="مثال: موظف مبيعات">
-</div>
-
-<div class="field">
-<label>المدينة</label>
-<input id="jobCity" required maxlength="60" placeholder="مكان العمل">
-</div>
-
-<div class="field">
-<label>نوع الوظيفة</label>
-<select id="jobType">
-<option>دوام كامل</option>
-<option>دوام جزئي</option>
-<option>عمل عن بُعد</option>
-<option>عمل مؤقت</option>
-<option>تدريب</option>
-</select>
-</div>
-
-<div class="field">
-<label>تفاصيل الوظيفة والمتطلبات</label>
-<textarea id="jobDescription" required maxlength="3000" placeholder="اكتب تفاصيل الوظيفة والشروط المطلوبة..."></textarea>
-</div>
-
-<button class="btn btn-green full" type="submit">نشر الوظيفة</button>
-
-</form>
-</div>
-</div>
-
-<div id="applicationsTab" class="hidden">
-<div class="section-title"><h2>طلبات التوظيف</h2></div>
-<div id="applicationsList"></div>
-</div>
-
-<div id="myjobsTab" class="hidden">
-<div class="section-title"><h2>الوظائف التي نشرتها</h2></div>
-<div id="myJobsList" class="grid"></div>
-</div>
-
-</section>
-
+  <section class="container section">
+    <div class="section-title">
+      <h2>أحدث فرص العمل</h2>
+      <button class="btn btn-light" onclick="loadPublicJobs()">تحديث الوظائف</button>
+    </div>
+    <div id="publicJobs" class="grid">
+      <div class="loading">جارٍ تحميل الوظائف...</div>
+    </div>
+  </section>
 </main>
 
-<footer>
-<strong>سواعد</strong><br>
-فرص تجمعنا، وخبرات تصنع المستقبل.<br>
-جميع الحقوق محفوظة © 2026
+<section id="authPage" class="hidden">
+  <div class="auth-wrap">
+    <div class="auth-box">
+      <h2 id="authTitle">تسجيل الدخول</h2>
+      <div id="authMessage"></div>
+
+      <form id="loginForm" onsubmit="loginUser(event)">
+        <div class="field">
+          <label>البريد الإلكتروني</label>
+          <input type="email" id="loginEmail" required autocomplete="email">
+        </div>
+        <div class="field" style="margin-top:13px">
+          <label>كلمة المرور</label>
+          <input type="password" id="loginPassword" required autocomplete="current-password">
+        </div>
+        <div class="form-buttons">
+          <button class="btn btn-primary" type="submit" id="loginSubmit">دخول</button>
+          <button class="btn btn-light" type="button" onclick="googleLogin()">الدخول بحساب Google</button>
+        </div>
+      </form>
+
+      <form id="registerForm" class="hidden" onsubmit="registerUser(event)">
+        <div class="field">
+          <label>الاسم الكامل</label>
+          <input type="text" id="regName" required maxlength="80">
+        </div>
+        <div class="field" style="margin-top:12px">
+          <label>البريد الإلكتروني</label>
+          <input type="email" id="regEmail" required autocomplete="email">
+        </div>
+        <div class="field" style="margin-top:12px">
+          <label>كلمة المرور (6 أحرف على الأقل)</label>
+          <input type="password" id="regPassword" required minlength="6" autocomplete="new-password">
+        </div>
+        <div class="field" style="margin-top:12px">
+          <label>المدينة</label>
+          <input type="text" id="regCity" required>
+        </div>
+        <div class="field" style="margin-top:12px">
+          <label>نوع الحساب</label>
+          <select id="regRole" required>
+            <option value="worker">باحث عن عمل</option>
+            <option value="employer">صاحب عمل / جهة توظيف</option>
+          </select>
+        </div>
+        <div class="field" style="margin-top:12px">
+          <label>المهنة أو التخصص</label>
+          <input type="text" id="regProfession" placeholder="مثال: محاسب، مهندس، فني...">
+        </div>
+        <div class="form-buttons">
+          <button class="btn btn-primary" type="submit" id="registerSubmit">إنشاء الحساب</button>
+          <button class="btn btn-light" type="button" onclick="googleLogin()">التسجيل بحساب Google</button>
+        </div>
+      </form>
+
+      <div class="auth-switch">
+        <span id="switchText">ليس لديك حساب؟</span>
+        <button class="text-button" id="switchButton" onclick="toggleAuth()">إنشاء حساب جديد</button>
+      </div>
+      <div class="auth-switch">
+        <button class="text-button" onclick="showHome()">العودة إلى الصفحة الرئيسية</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="profilePage" class="hidden page">
+  <div class="container">
+    <div class="panel">
+      <h2>إكمال بيانات الحساب</h2>
+      <p class="muted">يرجى إكمال بياناتك حتى تتمكن من استخدام المنصة.</p>
+      <div id="profileMessage"></div>
+      <form onsubmit="saveProfile(event)">
+        <div class="form-grid">
+          <div class="field">
+            <label>الاسم الكامل</label>
+            <input id="profileName" required maxlength="80">
+          </div>
+          <div class="field">
+            <label>المدينة</label>
+            <input id="profileCity" required>
+          </div>
+          <div class="field">
+            <label>نوع الحساب</label>
+            <select id="profileRole">
+              <option value="worker">باحث عن عمل</option>
+              <option value="employer">صاحب عمل / جهة توظيف</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>المهنة أو التخصص</label>
+            <input id="profileProfession">
+          </div>
+          <div class="field full">
+            <label>نبذة تعريفية</label>
+            <textarea id="profileBio" placeholder="اكتب نبذة مختصرة عنك أو عن نشاطك..."></textarea>
+          </div>
+        </div>
+        <div class="form-buttons">
+          <button class="btn btn-primary" type="submit">حفظ البيانات والمتابعة</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="dashboardPage" class="hidden page">
+  <div class="container">
+    <div class="panel">
+      <h2 id="welcomeText">لوحة التحكم</h2>
+      <p class="muted" id="accountDetails"></p>
+      <div id="dashboardMessage"></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong id="statJobs">0</strong><span>الوظائف المنشورة</span></div>
+      <div class="stat"><strong id="statApplications">0</strong><span>طلبات التقديم</span></div>
+      <div class="stat"><strong id="statPending">0</strong><span>طلبات قيد الانتظار</span></div>
+      <div class="stat"><strong id="statAccepted">0</strong><span>طلبات مقبولة</span></div>
+    </div>
+
+    <div class="tabs" id="dashboardTabs">
+      <button class="tab active" data-tab="browse" onclick="showTab('browse',this)">تصفح الوظائف</button>
+      <button class="tab" data-tab="post" onclick="showTab('post',this)">نشر وظيفة</button>
+      <button class="tab" data-tab="applications" onclick="showTab('applications',this)">طلبات التقديم</button>
+      <button class="tab" data-tab="myjobs" onclick="showTab('myjobs',this)">وظائفي</button>
+    </div>
+
+    <div id="tab-browse" class="tab-content">
+      <div class="section-title">
+        <h2>الوظائف المتاحة</h2>
+        <button class="btn btn-light" onclick="loadJobs()">تحديث</button>
+      </div>
+      <div id="dashboardJobs" class="grid">
+        <div class="loading">جارٍ التحميل...</div>
+      </div>
+    </div>
+
+    <div id="tab-post" class="tab-content hidden">
+      <div class="panel">
+        <h2>نشر فرصة عمل جديدة</h2>
+        <div id="postMessage"></div>
+        <form onsubmit="publishJob(event)">
+          <div class="form-grid">
+            <div class="field">
+              <label>المسمى الوظيفي</label>
+              <input id="jobTitle" required maxlength="100" placeholder="مثال: محاسب">
+            </div>
+            <div class="field">
+              <label>المدينة</label>
+              <input id="jobCity" required>
+            </div>
+            <div class="field">
+              <label>نوع الوظيفة</label>
+              <select id="jobType">
+                <option>دوام كامل</option>
+                <option>دوام جزئي</option>
+                <option>عمل عن بُعد</option>
+                <option>عمل مؤقت</option>
+                <option>تدريب</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>المؤهل أو الخبرة المطلوبة</label>
+              <input id="jobRequirements" placeholder="مثال: خبرة سنتان">
+            </div>
+            <div class="field full">
+              <label>تفاصيل الوظيفة وطريقة التقديم</label>
+              <textarea id="jobDescription" required maxlength="4000"></textarea>
+            </div>
+          </div>
+          <div class="form-buttons">
+            <button class="btn btn-primary" type="submit" id="publishButton">نشر الوظيفة</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="tab-applications" class="tab-content hidden">
+      <div class="section-title">
+        <h2>طلبات التقديم</h2>
+        <button class="btn btn-light" onclick="loadApplications()">تحديث</button>
+      </div>
+      <div id="applicationsList">
+        <div class="loading">جارٍ التحميل...</div>
+      </div>
+    </div>
+
+    <div id="tab-myjobs" class="tab-content hidden">
+      <div class="section-title">
+        <h2>الوظائف التي نشرتها</h2>
+        <button class="btn btn-light" onclick="loadMyJobs()">تحديث</button>
+      </div>
+      <div id="myJobsList" class="grid">
+        <div class="loading">جارٍ التحميل...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="jobModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div>سواعد | منصة التوظيف والخدمات</div>
+  <div>فرصتك تبدأ من هنا</div>
 </footer>
 
-<div id="modalRoot"></div>
-<div id="toastRoot"></div>
-
 <script type="module">
-
-import {initializeApp}
-from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
 import {
-getAuth,
-createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-GoogleAuthProvider,
-signInWithRedirect,
-getRedirectResult,
-signOut,
-onAuthStateChanged
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithRedirect
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-getDoc,
-doc,
-setDoc,
-updateDoc,
-query,
-where,
-serverTimestamp
+  getFirestore,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  addDoc,
+  updateDoc,
+  query,
+  where,
+  orderBy,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 
 /* إعدادات Firebase */
-
 const firebaseConfig = {
-apiKey: "AIzaSyDaqWa0ZDCOP6_uqVs6pGnj54LxJUj8QeA",
-authDomain: "sawaed-7dc28.firebaseapp.com",
-projectId: "sawaed-7dc28",
-storageBucket: "sawaed-7dc28.firebasestorage.app",
-messagingSenderId: "662890696050",
-appId: "1:662890696050:web:36442e2d65cb98eef7e1eb"
+  apiKey: "AIzaSyDaqWa0ZDCOP6_uqVs6pGnj54LxJUj8QeA",
+  authDomain: "sawaed-7dc28.firebaseapp.com",
+  projectId: "sawaed-7dc28",
+  storageBucket: "sawaed-7dc28.firebasestorage.app",
+  messagingSenderId: "662890696050",
+  appId: "1:662890696050:web:36442e2d65cb98eef7e1eb"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -503,902 +533,912 @@ const googleProvider = new GoogleAuthProvider();
 
 let currentUser = null;
 let currentProfile = null;
-let authMode = "register";
-let jobsCache = [];
-
-const $ = id => document.getElementById(id);
+let authInitialized = false;
+let profileWritePromise = null;
+let authVersion = 0;
+let selectedJob = null;
 
 
 /* أدوات مساعدة */
+const $ = id => document.getElementById(id);
 
 function escapeHTML(value){
-return String(value ?? "").replace(/[&<>"']/g,c=>({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#39;"
-})[c]);
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
 }
 
-function toast(text){
-$("toastRoot").innerHTML =
-`<div class="toast">${escapeHTML(text)}</div>`;
-setTimeout(()=>{$("toastRoot").innerHTML="";},3500);
-}
-
-function message(id,text,type="notice"){
-$(id).innerHTML =
-`<div class="notice ${type}">${escapeHTML(text)}</div>`;
+function showMessage(id,message,type="info"){
+  const element = $(id);
+  if(!element) return;
+  element.innerHTML = message
+    ? `<div class="notice ${type}">${escapeHTML(message)}</div>`
+    : "";
 }
 
 function errorText(error){
-
-const code=error?.code||"";
-
-const errors={
-"auth/email-already-in-use":"هذا البريد مسجل بالفعل.",
-"auth/invalid-email":"البريد الإلكتروني غير صحيح.",
-"auth/weak-password":"كلمة المرور ضعيفة. استخدم ستة أحرف على الأقل.",
-"auth/user-not-found":"لا يوجد حساب بهذا البريد.",
-"auth/wrong-password":"كلمة المرور غير صحيحة.",
-"auth/invalid-credential":"بيانات الدخول غير صحيحة.",
-"auth/network-request-failed":"تحقق من اتصال الإنترنت.",
-"auth/unauthorized-domain":"أضف نطاق الموقع إلى النطاقات المصرح بها في Firebase.",
-"permission-denied":"ليس لديك إذن لتنفيذ هذه العملية. تحقق من قواعد الحماية.",
-"unavailable":"الخدمة غير متاحة حالياً. حاول مرة أخرى."
-};
-
-return errors[code]||("حدث خطأ: "+(error?.message||"حاول مرة أخرى."));
+  const code = error?.code || "";
+  const messages = {
+    "auth/email-already-in-use":"هذا البريد الإلكتروني مسجل مسبقاً.",
+    "auth/invalid-email":"البريد الإلكتروني غير صحيح.",
+    "auth/weak-password":"كلمة المرور ضعيفة. استخدم 6 أحرف على الأقل.",
+    "auth/user-not-found":"لا يوجد حساب بهذا البريد الإلكتروني.",
+    "auth/wrong-password":"كلمة المرور غير صحيحة.",
+    "auth/invalid-credential":"بيانات الدخول غير صحيحة.",
+    "auth/too-many-requests":"محاولات كثيرة. حاول لاحقاً.",
+    "auth/network-request-failed":"تعذر الاتصال بالإنترنت.",
+    "auth/unauthorized-domain":"هذا النطاق غير مسموح به في إعدادات Firebase.",
+    "auth/popup-blocked":"المتصفح منع نافذة تسجيل الدخول.",
+    "permission-denied":"ليس لديك صلاحية لتنفيذ هذه العملية. تحقق من قواعد Firestore.",
+    "unavailable":"الخدمة غير متاحة حالياً. تحقق من الإنترنت."
+  };
+  return messages[code] || error?.message || "حدث خطأ غير متوقع.";
 }
 
-function showOnly(page){
+function setButtonLoading(buttonId,loading,text){
+  const button = $(buttonId);
+  if(!button) return;
+  if(loading){
+    button.dataset.oldText = button.textContent;
+    button.disabled = true;
+    button.textContent = "يرجى الانتظار...";
+  }else{
+    button.disabled = false;
+    button.textContent = text || button.dataset.oldText || "متابعة";
+  }
+}
 
-["homePage","authPage","profilePage","dashboardPage"].forEach(id=>{
-$(id).classList.add("hidden");
-});
-
-$(page).classList.remove("hidden");
+function showOnly(pageId){
+  ["homePage","authPage","profilePage","dashboardPage"].forEach(id=>{
+    $(id).classList.toggle("hidden",id !== pageId);
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 
 /* التنقل */
-
-window.showHome=function(){
-showOnly("homePage");
+window.showHome = function(){
+  showOnly("homePage");
 };
 
-window.showAuth=function(mode){
-
-authMode=mode;
-
-showOnly("authPage");
-
-$("authTitle").textContent=
-mode==="login"?"تسجيل الدخول":"إنشاء حساب جديد";
-
-$("authSubmit").textContent=
-mode==="login"?"دخول":"إنشاء الحساب";
-
-$("registerFields").classList.toggle("hidden",mode==="login");
-
-$("regName").required=mode==="register";
-$("regCity").required=mode==="register";
-
-$("switchText").textContent=
-mode==="login"?"ليس لديك حساب؟":"لديك حساب بالفعل؟";
-
-$("switchAuth").textContent=
-mode==="login"?"إنشاء حساب":"تسجيل الدخول";
-
-$("authMessage").innerHTML="";
+window.showAuth = function(){
+  showOnly("authPage");
+  $("authMessage").innerHTML = "";
 };
 
-window.toggleAuth=function(){
-showAuth(authMode==="login"?"register":"login");
-};
+window.toggleAuth = function(){
+  const login = $("loginForm");
+  const register = $("registerForm");
+  const registering = login.classList.contains("hidden");
 
-window.scrollToJobs=function(){
-$("jobsTitle").scrollIntoView({behavior:"smooth"});
+  login.classList.toggle("hidden",!registering);
+  register.classList.toggle("hidden",registering);
+
+  $("authTitle").textContent = registering ? "تسجيل الدخول" : "إنشاء حساب جديد";
+  $("switchText").textContent = registering ? "ليس لديك حساب؟" : "لديك حساب بالفعل؟";
+  $("switchButton").textContent = registering ? "إنشاء حساب جديد" : "تسجيل الدخول";
+  $("authMessage").innerHTML = "";
 };
 
 
-/* الملفات الشخصية */
+/* تحديث رأس الصفحة */
+function updateHeader(){
+  const area = $("headerActions");
 
-async function getProfile(uid){
+  if(currentUser && currentProfile){
+    area.innerHTML = `
+      <span style="color:#fff;font-size:13px">
+        ${escapeHTML(currentProfile.name || "مستخدم")}
+      </span>
+      <button type="button" class="btn btn-gold" id="dashboardButton">
+        لوحة التحكم
+      </button>
+      <button type="button" class="btn btn-outline" id="logoutButton">
+        خروج
+      </button>
+    `;
 
-const snap=await getDoc(doc(db,"profiles",uid));
+    $("dashboardButton").addEventListener("click",()=>{
+      window.openDashboard();
+    });
 
-return snap.exists()?snap.data():null;
+    $("logoutButton").addEventListener("click",()=>{
+      window.logoutUser();
+    });
 
+  }else{
+    area.innerHTML = `
+      <button class="btn btn-outline" onclick="showAuth()">
+        دخول / إنشاء حساب
+      </button>
+    `;
+  }
 }
 
-function showProfileSetup(){
 
-showOnly("profilePage");
-
-if(currentUser && currentUser.displayName){
-$("profileName").value=currentUser.displayName;
+/* قراءة بيانات المستخدم */
+async function getUserProfile(uid){
+  const snap = await getDoc(doc(db,"profiles",uid));
+  return snap.exists() ? snap.data() : null;
 }
 
-}
 
-$("profileForm").addEventListener("submit",async e=>{
+/* إنشاء الحساب */
+window.registerUser = async function(event){
+  event.preventDefault();
 
-e.preventDefault();
+  const name = $("regName").value.trim();
+  const email = $("regEmail").value.trim();
+  const password = $("regPassword").value;
+  const city = $("regCity").value.trim();
+  const role = $("regRole").value;
+  const profession = $("regProfession").value.trim();
 
-if(!currentUser)return;
+  if(!name || !email || !password || !city){
+    showMessage("authMessage","يرجى إكمال جميع البيانات المطلوبة.","error");
+    return;
+  }
 
-const name=$("profileName").value.trim();
-const city=$("profileCity").value.trim();
-const role=$("profileRole").value;
-const profession=$("profileProfession").value.trim();
+  setButtonLoading("registerSubmit",true);
 
-if(!name||!city){
-message("profileMessage","أدخل الاسم والمدينة.","error");
-return;
-}
+  profileWritePromise = (async()=>{
+    const result = await createUserWithEmailAndPassword(auth,email,password);
+    const user = result.user;
 
-try{
+    await setDoc(doc(db,"profiles",user.uid),{
+      uid:user.uid,
+      name,
+      email,
+      city,
+      role,
+      profession,
+      bio:"",
+      createdAt:serverTimestamp()
+    });
 
-await setDoc(doc(db,"profiles",currentUser.uid),{
+    return user;
+  })();
 
-uid:currentUser.uid,
-name,
-city,
-role,
-profession,
-bio:"",
-createdAt:serverTimestamp()
-
-});
-
-currentProfile=await getProfile(currentUser.uid);
-
-toast("تم حفظ الملف الشخصي بنجاح.");
-
-updateHeader();
-
-openDashboard();
-
-}catch(error){
-
-message("profileMessage",errorText(error),"error");
-
-}
-
-});
-
-
-/* إنشاء الحساب وتسجيل الدخول */
-
-$("authForm").addEventListener("submit",async e=>{
-
-e.preventDefault();
-
-const email=$("authEmail").value.trim();
-const password=$("authPassword").value;
-
-try{
-
-if(authMode==="login"){
-
-await signInWithEmailAndPassword(auth,email,password);
-
-}else{
-
-const name=$("regName").value.trim();
-const city=$("regCity").value.trim();
-const role=$("regRole").value;
-const profession=$("regProfession").value.trim();
-
-if(!name||!city){
-message("authMessage","أدخل الاسم والمدينة.","error");
-return;
-}
-
-const credential=await createUserWithEmailAndPassword(auth,email,password);
-
-currentUser=credential.user;
-
-await setDoc(doc(db,"profiles",currentUser.uid),{
-
-uid:currentUser.uid,
-name,
-city,
-role,
-profession,
-bio:"",
-createdAt:serverTimestamp()
-
-});
-
-currentProfile=await getProfile(currentUser.uid);
-
-toast("مرحباً بك في سواعد.");
-
-openDashboard();
-
-}
-
-}catch(error){
-
-message("authMessage",errorText(error),"error");
-
-}
-
-});
-
-
-/* Google */
-
-window.googleLogin=async function(){
-
-try{
-
-await signInWithRedirect(auth,googleProvider);
-
-}catch(error){
-
-toast(errorText(error));
-
-}
-
+  try{
+    await profileWritePromise;
+    showMessage("authMessage","تم إنشاء الحساب بنجاح.","success");
+  }catch(error){
+    showMessage("authMessage",errorText(error),"error");
+  }finally{
+    profileWritePromise = null;
+    setButtonLoading("registerSubmit",false,"إنشاء الحساب");
+  }
 };
 
-async function handleGoogleResult(){
 
-try{
+/* تسجيل الدخول */
+window.loginUser = async function(event){
+  event.preventDefault();
 
-const result=await getRedirectResult(auth);
+  const email = $("loginEmail").value.trim();
+  const password = $("loginPassword").value;
 
-if(result && result.user){
+  setButtonLoading("loginSubmit",true);
 
-currentUser=result.user;
+  try{
+    await signInWithEmailAndPassword(auth,email,password);
+  }catch(error){
+    showMessage("authMessage",errorText(error),"error");
+  }finally{
+    setButtonLoading("loginSubmit",false,"دخول");
+  }
+};
 
-currentProfile=await getProfile(currentUser.uid);
 
-if(!currentProfile){
-
-showProfileSetup();
-
-}else{
-
-openDashboard();
-
-}
-
-}
-
-}catch(error){
-
-toast(errorText(error));
-
-}
-
-}
+/* الدخول بحساب Google */
+window.googleLogin = async function(){
+  try{
+    await signInWithRedirect(auth,googleProvider);
+  }catch(error){
+    showMessage("authMessage",errorText(error),"error");
+  }
+};
 
 
 /* تسجيل الخروج */
-
-window.logout=async function(){
-
-try{
-
-await signOut(auth);
-
-currentUser=null;
-currentProfile=null;
-
-showHome();
-
-updateHeader();
-
-toast("تم تسجيل الخروج.");
-
-}catch(error){
-
-toast(errorText(error));
-
-}
-
+window.logoutUser = async function(){
+  try{
+    await signOut(auth);
+    currentUser = null;
+    currentProfile = null;
+    updateHeader();
+    showOnly("homePage");
+  }catch(error){
+    alert(errorText(error));
+  }
 };
 
 
-/* متابعة حالة المستخدم */
+/* إكمال الملف الشخصي */
+function showProfileSetup(){
+  showOnly("profilePage");
 
+  $("profileName").value =
+    currentProfile?.name || currentUser?.displayName || "";
+
+  $("profileCity").value = currentProfile?.city || "";
+  $("profileRole").value = currentProfile?.role || "worker";
+  $("profileProfession").value = currentProfile?.profession || "";
+  $("profileBio").value = currentProfile?.bio || "";
+}
+
+window.saveProfile = async function(event){
+  event.preventDefault();
+
+  if(!currentUser) return;
+
+  const profile = {
+    uid:currentUser.uid,
+    email:currentUser.email || "",
+    name:$("profileName").value.trim(),
+    city:$("profileCity").value.trim(),
+    role:$("profileRole").value,
+    profession:$("profileProfession").value.trim(),
+    bio:$("profileBio").value.trim(),
+    updatedAt:serverTimestamp()
+  };
+
+  try{
+    await setDoc(doc(db,"profiles",currentUser.uid),profile,{merge:true});
+    currentProfile = {...profile};
+    updateHeader();
+    window.openDashboard();
+  }catch(error){
+    showMessage("profileMessage",errorText(error),"error");
+  }
+};
+
+
+/* مراقبة حالة تسجيل الدخول */
 onAuthStateChanged(auth,async user=>{
+  const version = ++authVersion;
 
-currentUser=user;
-currentProfile=null;
+  currentUser = user;
+  currentProfile = null;
+  updateHeader();
 
-if(user){
+  if(!user){
+    authInitialized = true;
+    showOnly("homePage");
+    return;
+  }
 
-try{
+  try{
+    if(profileWritePromise){
+      await profileWritePromise;
+    }
 
-currentProfile=await getProfile(user.uid);
+    const profile = await getUserProfile(user.uid);
 
-updateHeader();
+    if(version !== authVersion) return;
 
-if(currentProfile){
+    currentProfile = profile;
+    authInitialized = true;
+    updateHeader();
 
-openDashboard();
+    if(!profile){
+      showProfileSetup();
+      return;
+    }
 
-}else{
+    window.openDashboard();
 
-showProfileSetup();
+  }catch(error){
+    if(version !== authVersion) return;
 
-}
-
-}catch(error){
-
-toast(errorText(error));
-
-}
-
-}else{
-
-updateHeader();
-
-showHome();
-
-}
-
+    authInitialized = true;
+    showOnly("dashboardPage");
+    $("dashboardMessage").innerHTML =
+      `<div class="notice error">${escapeHTML(errorText(error))}</div>`;
+  }
 });
 
 
-function updateHeader(){
+/* فتح لوحة التحكم */
+window.openDashboard = function(){
+  if(!currentUser){
+    showAuth();
+    return;
+  }
 
-if(currentUser && currentProfile){
+  if(!currentProfile){
+    showProfileSetup();
+    return;
+  }
 
-$("headerActions").innerHTML=`
-<button class="btn btn-gold" id="dashboardButton" type="button">
-لوحة التحكم
-</button>
-`;
+  showOnly("dashboardPage");
 
-}else{
+  $("welcomeText").textContent =
+    "مرحباً، " + (currentProfile.name || "بك");
 
-$("headerActions").innerHTML=`
-<button class="btn btn-outline" onclick="showAuth('login')" type="button">دخول</button>
-<button class="btn btn-gold" onclick="showAuth('register')" type="button">إنشاء حساب</button>
-`;
+  $("accountDetails").textContent =
+    (currentProfile.role === "employer" ? "صاحب عمل" : "باحث عن عمل")
+    + " | " + (currentProfile.city || "");
 
-}
+  const postTab = document.querySelector('[data-tab="post"]');
+  const myJobsTab = document.querySelector('[data-tab="myjobs"]');
 
-}
+  const isEmployer = currentProfile.role === "employer";
 
-/* معالجة زر لوحة التحكم بطريقة مباشرة وثابتة */
-$("headerActions").addEventListener("click",function(event){
+  postTab.classList.toggle("hidden",!isEmployer);
+  myJobsTab.classList.toggle("hidden",!isEmployer);
 
-const button=event.target.closest("#dashboardButton");
-
-if(!button)return;
-
-event.preventDefault();
-
-if(typeof window.openDashboard==="function"){
-window.openDashboard();
-}else{
-toast("تعذر فتح لوحة التحكم. أعد تحميل الصفحة وحاول مرة أخرى.");
-}
-
-});
-
-
-/* لوحة التحكم */
-
-window.openDashboard=async function(){
-
-if(!currentUser)return showAuth("login");
-
-if(!currentProfile)return showProfileSetup();
-
-showOnly("dashboardPage");
-
-$("welcomeTitle").textContent="مرحباً، "+currentProfile.name;
-
-$("userInfo").textContent=
-(currentProfile.role==="employer"?"صاحب عمل":"باحث عن عمل")
-+" • "+(currentProfile.city||"");
-
-$("postTab").classList.toggle(
-"hidden",
-currentProfile.role!=="employer"
-);
-
-showTab("browse",document.querySelector(".tab"));
-
-await loadJobs(true);
-
-await loadStats();
-
+  window.showTab("browse",document.querySelector('[data-tab="browse"]'));
+  loadStats();
 };
 
 
 /* التبويبات */
+window.showTab = function(tabName,button){
+  if(tabName === "post" && currentProfile?.role !== "employer"){
+    return;
+  }
 
-window.showTab=function(name,button){
+  if(tabName === "myjobs" && currentProfile?.role !== "employer"){
+    return;
+  }
 
-["browse","post","applications","myjobs"].forEach(tab=>{
+  document.querySelectorAll(".tab-content").forEach(element=>{
+    element.classList.add("hidden");
+  });
 
-const element=tab==="post"?"postTabContent":tab+"Tab";
+  document.querySelectorAll(".tab").forEach(element=>{
+    element.classList.remove("active");
+  });
 
-$(element).classList.toggle("hidden",tab!==name);
+  const content = $("tab-" + tabName);
+  if(content) content.classList.remove("hidden");
 
-});
+  const selected = button || document.querySelector(`[data-tab="${tabName}"]`);
+  if(selected) selected.classList.add("active");
 
-document.querySelectorAll(".tab").forEach(x=>{
-x.classList.remove("active");
-});
-
-if(button)button.classList.add("active");
-
-if(name==="browse")loadJobs(true);
-
-if(name==="applications")loadApplications();
-
-if(name==="myjobs")loadMyJobs();
-
+  if(tabName === "browse") loadJobs();
+  if(tabName === "applications") loadApplications();
+  if(tabName === "myjobs") loadMyJobs();
 };
 
 
-/* الوظائف */
-
-function sortNewest(items){
-
-return items.sort((a,b)=>{
-
-const ta=a.createdAt?.seconds||0;
-const tb=b.createdAt?.seconds||0;
-
-return tb-ta;
-
-});
-
-}
-
-async function loadJobs(dashboard=false){
-
-const target=dashboard?"dashboardJobs":"publicJobs";
-
-$(target).innerHTML=
-'<div class="loading">جاري تحميل الوظائف...</div>';
-
-try{
-
-const q=query(
-collection(db,"jobs"),
-where("status","==","published")
-);
-
-const snap=await getDocs(q);
-
-jobsCache=sortNewest(
-snap.docs.map(d=>({id:d.id,...d.data()}))
-);
-
-renderJobs(target,jobsCache);
-
-}catch(error){
-
-$(target).innerHTML=
-`<div class="empty">${escapeHTML(errorText(error))}</div>`;
-
-}
-
-}
-
-function renderJobs(target,jobs){
-
-if(!jobs.length){
-
-$(target).innerHTML=
-'<div class="empty">لا توجد وظائف منشورة حالياً.</div>';
-
-return;
-
-}
-
-$(target).innerHTML=jobs.map(job=>`
-
-<div class="card job-card">
-
-<div>
-<span class="badge">${escapeHTML(job.type||"فرصة عمل")}</span>
-</div>
-
-<h3>${escapeHTML(job.title)}</h3>
-
-<div class="meta">📍 ${escapeHTML(job.city||"غير محدد")}</div>
-
-<div class="meta">🏢 ${escapeHTML(job.employerName||"جهة عمل")}</div>
-
-<p>${escapeHTML((job.description||"").slice(0,180))}${(job.description||"").length>180?"...":""}</p>
-
-<button class="btn btn-green" onclick="applyJob('${job.id}')">
-عرض الوظيفة والتقديم
-</button>
-
-</div>
-
-`).join("");
-
+/* تنسيق الوظائف */
+function jobCard(job,id){
+  return `
+    <div class="card">
+      <h3>${escapeHTML(job.title)}</h3>
+      <div class="muted">بواسطة: ${escapeHTML(job.employerName || "جهة توظيف")}</div>
+      <div class="job-meta">
+        <span class="tag">📍 ${escapeHTML(job.city)}</span>
+        <span class="tag">${escapeHTML(job.type || "وظيفة")}</span>
+      </div>
+      <p>${escapeHTML((job.description || "").slice(0,150))}
+        ${(job.description || "").length > 150 ? "..." : ""}
+      </p>
+      <div class="card-actions">
+        <button class="btn btn-primary" onclick="viewJob('${id}')">
+          التفاصيل والتقديم
+        </button>
+      </div>
+    </div>
+  `;
 }
 
 
-/* التقديم على وظيفة */
+/* تحميل الوظائف العامة */
+window.loadPublicJobs = async function(){
+  const box = $("publicJobs");
+  box.innerHTML = '<div class="loading">جارٍ تحميل الوظائف...</div>';
 
-window.applyJob=async function(jobId){
+  try{
+    const q = query(
+      collection(db,"jobs"),
+      where("status","==","published")
+    );
 
-if(!currentUser){
+    const snap = await getDocs(q);
+    const jobs = [];
 
-toast("سجل الدخول أولاً للتقديم.");
+    snap.forEach(item=>{
+      jobs.push({id:item.id,...item.data()});
+    });
 
-showAuth("login");
+    jobs.sort((a,b)=>
+      (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0)
+    );
 
-return;
+    if(!jobs.length){
+      box.innerHTML = '<div class="empty">لا توجد وظائف منشورة حالياً.</div>';
+      return;
+    }
 
-}
+    box.innerHTML = jobs.slice(0,6).map(job=>
+      jobCard(job,job.id)
+    ).join("");
 
-if(!currentProfile){
-
-showProfileSetup();
-
-return;
-
-}
-
-if(currentProfile.role!=="worker"){
-
-toast("التقديم متاح لحسابات الباحثين عن عمل.");
-
-return;
-
-}
-
-const job=jobsCache.find(j=>j.id===jobId);
-
-if(!job)return toast("تعذر العثور على الوظيفة.");
-
-$("modalRoot").innerHTML=`
-
-<div class="modal-bg" onclick="closeModal(event)">
-
-<div class="modal" onclick="event.stopPropagation()">
-
-<h3>${escapeHTML(job.title)}</h3>
-
-<p class="meta">📍 ${escapeHTML(job.city||"")}</p>
-
-<p>${escapeHTML(job.description||"")}</p>
-
-<div class="field">
-
-<label>رسالة إلى صاحب العمل</label>
-
-<textarea id="applicationMessage" maxlength="1500"
-placeholder="اكتب نبذة مختصرة عن اهتمامك بالوظيفة وخبرتك..."></textarea>
-
-</div>
-
-<button class="btn btn-green full" onclick="sendApplication('${job.id}')">
-إرسال طلب التقديم
-</button>
-
-<button class="btn btn-light full" style="margin-top:9px" onclick="closeModal()">
-إغلاق
-</button>
-
-</div>
-</div>
-
-`;
-
+  }catch(error){
+    box.innerHTML =
+      `<div class="notice error">${escapeHTML(errorText(error))}</div>`;
+  }
 };
 
 
-window.closeModal=function(event){
+/* تحميل الوظائف داخل لوحة التحكم */
+window.loadJobs = async function(){
+  const box = $("dashboardJobs");
+  if(!box) return;
 
-if(event && event.target!==$("modalRoot").firstElementChild)return;
+  box.innerHTML = '<div class="loading">جارٍ تحميل الوظائف...</div>';
 
-$("modalRoot").innerHTML="";
+  try{
+    const q = query(
+      collection(db,"jobs"),
+      where("status","==","published")
+    );
 
-};
+    const snap = await getDocs(q);
+    const jobs = [];
 
+    snap.forEach(item=>{
+      jobs.push({id:item.id,...item.data()});
+    });
 
-window.sendApplication=async function(jobId){
+    jobs.sort((a,b)=>
+      (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0)
+    );
 
-const job=jobsCache.find(j=>j.id===jobId);
+    if(!jobs.length){
+      box.innerHTML = '<div class="empty">لا توجد وظائف متاحة حالياً.</div>';
+      return;
+    }
 
-if(!job||!currentUser||!currentProfile)return;
+    box.innerHTML = jobs.map(job=>jobCard(job,job.id)).join("");
 
-try{
-
-await addDoc(collection(db,"applications"),{
-
-workerId:currentUser.uid,
-employerId:job.employerId,
-jobId:job.id,
-jobTitle:job.title,
-workerName:currentProfile.name,
-message:$("applicationMessage").value.trim(),
-status:"pending",
-createdAt:serverTimestamp()
-
-});
-
-closeModal();
-
-toast("تم إرسال طلب التقديم بنجاح.");
-
-loadStats();
-
-}catch(error){
-
-toast(errorText(error));
-
-}
-
+  }catch(error){
+    box.innerHTML =
+      `<div class="notice error">${escapeHTML(errorText(error))}</div>`;
+  }
 };
 
 
 /* نشر وظيفة */
-
-$("jobForm").addEventListener("submit",async e=>{
-
-e.preventDefault();
-
-if(!currentUser||!currentProfile||currentProfile.role!=="employer"){
-
-toast("نشر الوظائف متاح لأصحاب العمل فقط.");
-
-return;
-
-}
-
-try{
-
-await addDoc(collection(db,"jobs"),{
-
-title:$("jobTitle").value.trim(),
-city:$("jobCity").value.trim(),
-type:$("jobType").value,
-description:$("jobDescription").value.trim(),
-employerId:currentUser.uid,
-employerName:currentProfile.name,
-status:"published",
-createdAt:serverTimestamp()
-
-});
-
-$("jobForm").reset();
-
-message("jobMessage","تم نشر الوظيفة بنجاح.","success");
-
-toast("تم نشر الوظيفة.");
-
-loadJobs(true);
-
-loadStats();
-
-}catch(error){
-
-message("jobMessage",errorText(error),"error");
-
-}
-
-});
-
-
-/* وظائف صاحب العمل */
-
-async function loadMyJobs(){
-
-if(!currentUser)return;
-
-$("myJobsList").innerHTML=
-'<div class="loading">جاري التحميل...</div>';
-
-try{
-
-const q=query(
-collection(db,"jobs"),
-where("employerId","==",currentUser.uid)
-);
-
-const snap=await getDocs(q);
-
-const list=sortNewest(
-snap.docs.map(d=>({id:d.id,...d.data()}))
-);
-
-if(!list.length){
-
-$("myJobsList").innerHTML=
-'<div class="empty">لم تنشر أي وظيفة حتى الآن.</div>';
-
-return;
-
-}
-
-$("myJobsList").innerHTML=list.map(j=>`
-
-<div class="card">
-
-<span class="badge">منشورة</span>
-
-<h3>${escapeHTML(j.title)}</h3>
-
-<div class="meta">📍 ${escapeHTML(j.city||"")}</div>
-
-<p>${escapeHTML(j.description||"")}</p>
-
-</div>
-
-`).join("");
-
-}catch(error){
-
-$("myJobsList").innerHTML=
-`<div class="empty">${escapeHTML(errorText(error))}</div>`;
-
-}
-
-}
-
-
-/* طلبات التوظيف */
-
-async function loadApplications(){
-
-if(!currentUser||!currentProfile)return;
-
-$("applicationsList").innerHTML=
-'<div class="loading">جاري التحميل...</div>';
-
-try{
-
-const field=currentProfile.role==="worker"?"workerId":"employerId";
-
-const q=query(
-collection(db,"applications"),
-where(field,"==",currentUser.uid)
-);
-
-const snap=await getDocs(q);
-
-const list=sortNewest(
-snap.docs.map(d=>({id:d.id,...d.data()}))
-);
-
-if(!list.length){
-
-$("applicationsList").innerHTML=
-'<div class="empty">لا توجد طلبات توظيف حتى الآن.</div>';
-
-return;
-
-}
-
-$("applicationsList").innerHTML=list.map(a=>`
-
-<div class="card" style="margin-bottom:13px">
-
-<h3>${escapeHTML(a.jobTitle)}</h3>
-
-<div class="meta">المتقدم: ${escapeHTML(a.workerName||"")}</div>
-
-<p>${escapeHTML(a.message||"لا توجد رسالة مرفقة.")}</p>
-
-<span class="badge">
-${a.status==="pending"?"قيد المراجعة":
-a.status==="accepted"?"تم قبول الطلب":
-a.status==="rejected"?"تم رفض الطلب":
-escapeHTML(a.status)}
-</span>
-
-${currentProfile.role==="employer" && a.status==="pending"?`
-
-<button class="btn btn-green btn-small"
-onclick="changeApplication('${a.id}','accepted')">
-قبول الطلب
-</button>
-
-<button class="btn btn-danger btn-small"
-onclick="changeApplication('${a.id}','rejected')">
-رفض الطلب
-</button>
-
-`:""}
-
-</div>
-
-`).join("");
-
-}catch(error){
-
-$("applicationsList").innerHTML=
-`<div class="empty">${escapeHTML(errorText(error))}</div>`;
-
-}
-
-}
-
-
-window.changeApplication=async function(id,status){
-
-try{
-
-await updateDoc(doc(db,"applications",id),{
-status:status
-});
-
-toast("تم تحديث حالة الطلب.");
-
-loadApplications();
-
-}catch(error){
-
-toast(errorText(error));
-
-}
-
+window.publishJob = async function(event){
+  event.preventDefault();
+
+  if(!currentUser || currentProfile?.role !== "employer"){
+    showMessage("postMessage","نشر الوظائف متاح لحسابات أصحاب الأعمال فقط.","error");
+    return;
+  }
+
+  const title = $("jobTitle").value.trim();
+  const city = $("jobCity").value.trim();
+  const type = $("jobType").value;
+  const requirements = $("jobRequirements").value.trim();
+  const description = $("jobDescription").value.trim();
+
+  if(!title || !city || !description){
+    showMessage("postMessage","يرجى إكمال بيانات الوظيفة.","error");
+    return;
+  }
+
+  setButtonLoading("publishButton",true);
+
+  try{
+    await addDoc(collection(db,"jobs"),{
+      title,
+      city,
+      type,
+      requirements,
+      description,
+      employerId:currentUser.uid,
+      employerName:currentProfile.name || "",
+      status:"published",
+      createdAt:serverTimestamp()
+    });
+
+    $("jobTitle").value = "";
+    $("jobCity").value = "";
+    $("jobRequirements").value = "";
+    $("jobDescription").value = "";
+
+    showMessage("postMessage","تم نشر الوظيفة بنجاح.","success");
+
+    await loadStats();
+    await loadMyJobs();
+
+  }catch(error){
+    showMessage("postMessage",errorText(error),"error");
+  }finally{
+    setButtonLoading("publishButton",false,"نشر الوظيفة");
+  }
+};
+
+
+/* عرض تفاصيل وظيفة */
+window.viewJob = async function(jobId){
+  try{
+    const snap = await getDoc(doc(db,"jobs",jobId));
+
+    if(!snap.exists()){
+      alert("هذه الوظيفة لم تعد موجودة.");
+      return;
+    }
+
+    const job = snap.data();
+    selectedJob = {id:jobId,...job};
+
+    let buttons = "";
+
+    if(currentUser && currentProfile?.role === "worker"){
+      buttons = `
+        <hr>
+        <h3>التقديم على الوظيفة</h3>
+        <form onsubmit="applyForJob(event)">
+          <div class="field">
+            <label>رسالة التقديم</label>
+            <textarea id="applicationMessage" required
+              placeholder="اكتب رسالة مختصرة لصاحب العمل..."></textarea>
+          </div>
+          <div class="form-buttons">
+            <button class="btn btn-primary" type="submit" id="applyButton">
+              إرسال طلب التقديم
+            </button>
+          </div>
+        </form>
+      `;
+    }else if(!currentUser){
+      buttons = `
+        <div class="notice info">سجل الدخول بحساب باحث عن عمل حتى تتمكن من التقديم.</div>
+        <button class="btn btn-primary" onclick="closeModal();showAuth()">
+          تسجيل الدخول
+        </button>
+      `;
+    }else{
+      buttons = '<div class="notice info">التقديم متاح لحسابات الباحثين عن عمل.</div>';
+    }
+
+    $("modalContent").innerHTML = `
+      <h2 style="color:var(--green)">${escapeHTML(job.title)}</h2>
+      <div class="job-meta">
+        <span class="tag">📍 ${escapeHTML(job.city)}</span>
+        <span class="tag">${escapeHTML(job.type || "")}</span>
+      </div>
+      <p><strong>جهة التوظيف:</strong> ${escapeHTML(job.employerName || "")}</p>
+      <p><strong>المتطلبات:</strong> ${escapeHTML(job.requirements || "غير محدد")}</p>
+      <hr>
+      <h3>تفاصيل الوظيفة</h3>
+      <p style="white-space:pre-wrap">${escapeHTML(job.description || "")}</p>
+      ${buttons}
+    `;
+
+    $("jobModal").classList.add("show");
+
+  }catch(error){
+    alert(errorText(error));
+  }
+};
+
+window.closeModal = function(){
+  $("jobModal").classList.remove("show");
+  selectedJob = null;
+};
+
+
+/* التقديم على وظيفة */
+window.applyForJob = async function(event){
+  event.preventDefault();
+
+  if(!currentUser || currentProfile?.role !== "worker" || !selectedJob){
+    alert("يجب تسجيل الدخول بحساب باحث عن عمل.");
+    return;
+  }
+
+  const message = $("applicationMessage").value.trim();
+
+  if(!message){
+    alert("اكتب رسالة التقديم أولاً.");
+    return;
+  }
+
+  setButtonLoading("applyButton",true);
+
+  try{
+    const existingQuery = query(
+      collection(db,"applications"),
+      where("workerId","==",currentUser.uid)
+    );
+
+    const existingSnap = await getDocs(existingQuery);
+
+    let alreadyApplied = false;
+
+    existingSnap.forEach(item=>{
+      if(item.data().jobId === selectedJob.id){
+        alreadyApplied = true;
+      }
+    });
+
+    if(alreadyApplied){
+      alert("سبق لك التقديم على هذه الوظيفة.");
+      return;
+    }
+
+    await addDoc(collection(db,"applications"),{
+      jobId:selectedJob.id,
+      jobTitle:selectedJob.title,
+      employerId:selectedJob.employerId,
+      employerName:selectedJob.employerName || "",
+      workerId:currentUser.uid,
+      workerName:currentProfile.name || "",
+      workerCity:currentProfile.city || "",
+      workerProfession:currentProfile.profession || "",
+      message,
+      status:"pending",
+      createdAt:serverTimestamp()
+    });
+
+    alert("تم إرسال طلبك بنجاح.");
+    closeModal();
+    await loadStats();
+
+  }catch(error){
+    alert(errorText(error));
+  }finally{
+    const button = $("applyButton");
+    if(button){
+      button.disabled = false;
+      button.textContent = "إرسال طلب التقديم";
+    }
+  }
+};
+
+
+/* تحميل طلبات التقديم */
+window.loadApplications = async function(){
+  if(!currentUser || !currentProfile) return;
+
+  const box = $("applicationsList");
+  box.innerHTML = '<div class="loading">جارٍ تحميل الطلبات...</div>';
+
+  try{
+    const fieldName =
+      currentProfile.role === "employer" ? "employerId" : "workerId";
+
+    const q = query(
+      collection(db,"applications"),
+      where(fieldName,"==",currentUser.uid)
+    );
+
+    const snap = await getDocs(q);
+    const applications = [];
+
+    snap.forEach(item=>{
+      applications.push({id:item.id,...item.data()});
+    });
+
+    applications.sort((a,b)=>
+      (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0)
+    );
+
+    if(!applications.length){
+      box.innerHTML = '<div class="empty">لا توجد طلبات تقديم حتى الآن.</div>';
+      return;
+    }
+
+    box.innerHTML = applications.map(item=>{
+      const statusText = {
+        pending:"قيد الانتظار",
+        accepted:"تم القبول",
+        rejected:"تم الرفض"
+      }[item.status] || item.status;
+
+      const statusClass =
+        item.status === "accepted" ? "success" :
+        item.status === "rejected" ? "error" : "info";
+
+      let employerButtons = "";
+
+      if(currentProfile.role === "employer" && item.status === "pending"){
+        employerButtons = `
+          <div class="card-actions">
+            <button class="btn btn-primary"
+              onclick="changeApplication('${item.id}','accepted')">
+              قبول الطلب
+            </button>
+            <button class="btn btn-danger"
+              onclick="changeApplication('${item.id}','rejected')">
+              رفض الطلب
+            </button>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="card" style="margin-bottom:13px">
+          <h3>${escapeHTML(item.jobTitle || "وظيفة")}</h3>
+          <p><strong>${currentProfile.role === "employer" ? "المتقدم:" : "جهة التوظيف:"}</strong>
+            ${escapeHTML(currentProfile.role === "employer" ? item.workerName : item.employerName)}
+          </p>
+          ${currentProfile.role === "employer" ? `
+            <p><strong>مدينة المتقدم:</strong> ${escapeHTML(item.workerCity || "")}</p>
+            <p><strong>التخصص:</strong> ${escapeHTML(item.workerProfession || "")}</p>
+          ` : ""}
+          <p><strong>رسالة التقديم:</strong></p>
+          <p style="white-space:pre-wrap">${escapeHTML(item.message || "")}</p>
+          <div class="notice ${statusClass}">
+            حالة الطلب: ${escapeHTML(statusText)}
+          </div>
+          ${employerButtons}
+        </div>
+      `;
+    }).join("");
+
+  }catch(error){
+    box.innerHTML =
+      `<div class="notice error">${escapeHTML(errorText(error))}</div>`;
+  }
+};
+
+
+/* قبول أو رفض طلب */
+window.changeApplication = async function(applicationId,status){
+  if(!currentUser || currentProfile?.role !== "employer"){
+    alert("هذه العملية متاحة لصاحب العمل فقط.");
+    return;
+  }
+
+  if(!["accepted","rejected"].includes(status)) return;
+
+  const confirmation = status === "accepted"
+    ? "هل تريد قبول هذا الطلب؟"
+    : "هل تريد رفض هذا الطلب؟";
+
+  if(!confirm(confirmation)) return;
+
+  try{
+    await updateDoc(doc(db,"applications",applicationId),{
+      status,
+      updatedAt:serverTimestamp()
+    });
+
+    await loadApplications();
+    await loadStats();
+
+  }catch(error){
+    alert(errorText(error));
+  }
+};
+
+
+/* الوظائف التي نشرها صاحب العمل */
+window.loadMyJobs = async function(){
+  if(!currentUser || currentProfile?.role !== "employer") return;
+
+  const box = $("myJobsList");
+  box.innerHTML = '<div class="loading">جارٍ تحميل وظائفك...</div>';
+
+  try{
+    const q = query(
+      collection(db,"jobs"),
+      where("employerId","==",currentUser.uid)
+    );
+
+    const snap = await getDocs(q);
+    const jobs = [];
+
+    snap.forEach(item=>{
+      jobs.push({id:item.id,...item.data()});
+    });
+
+    jobs.sort((a,b)=>
+      (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0)
+    );
+
+    if(!jobs.length){
+      box.innerHTML = '<div class="empty">لم تنشر أي وظيفة حتى الآن.</div>';
+      return;
+    }
+
+    box.innerHTML = jobs.map(job=>`
+      <div class="card">
+        <h3>${escapeHTML(job.title)}</h3>
+        <div class="job-meta">
+          <span class="tag">${escapeHTML(job.city)}</span>
+          <span class="tag">${escapeHTML(job.type || "")}</span>
+        </div>
+        <p>${escapeHTML((job.description || "").slice(0,130))}</p>
+        <div class="notice ${job.status === "published" ? "success" : "info"}">
+          ${job.status === "published" ? "منشورة" : "غير منشورة"}
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-light" onclick="viewJob('${job.id}')">
+            عرض التفاصيل
+          </button>
+        </div>
+      </div>
+    `).join("");
+
+  }catch(error){
+    box.innerHTML =
+      `<div class="notice error">${escapeHTML(errorText(error))}</div>`;
+  }
 };
 
 
 /* الإحصائيات */
-
 async function loadStats(){
+  if(!currentUser || !currentProfile) return;
 
-if(!currentUser||!currentProfile)return;
+  try{
+    let jobsCount = 0;
+    let applications = [];
 
-try{
+    if(currentProfile.role === "employer"){
+      const jobsQuery = query(
+        collection(db,"jobs"),
+        where("employerId","==",currentUser.uid)
+      );
 
-if(currentProfile.role==="employer"){
+      const jobsSnap = await getDocs(jobsQuery);
+      jobsCount = jobsSnap.size;
 
-const q=query(
-collection(db,"jobs"),
-where("employerId","==",currentUser.uid)
-);
+      const appsQuery = query(
+        collection(db,"applications"),
+        where("employerId","==",currentUser.uid)
+      );
 
-const snap=await getDocs(q);
+      const appsSnap = await getDocs(appsQuery);
+      appsSnap.forEach(item=>applications.push(item.data()));
 
-$("statJobs").textContent=snap.size;
+    }else{
+      const jobsQuery = query(
+        collection(db,"jobs"),
+        where("status","==","published")
+      );
 
-}else{
+      const jobsSnap = await getDocs(jobsQuery);
+      jobsCount = jobsSnap.size;
 
-$("statJobs").textContent="—";
+      const appsQuery = query(
+        collection(db,"applications"),
+        where("workerId","==",currentUser.uid)
+      );
 
+      const appsSnap = await getDocs(appsQuery);
+      appsSnap.forEach(item=>applications.push(item.data()));
+    }
+
+    $("statJobs").textContent = jobsCount;
+    $("statApplications").textContent = applications.length;
+
+    $("statPending").textContent =
+      applications.filter(item=>item.status === "pending").length;
+
+    $("statAccepted").textContent =
+      applications.filter(item=>item.status === "accepted").length;
+
+  }catch(error){
+    console.error("Stats error:",error);
+  }
 }
 
-const field=currentProfile.role==="worker"?"workerId":"employerId";
 
-const a=query(
-collection(db,"applications"),
-where(field,"==",currentUser.uid)
-);
-
-const as=await getDocs(a);
-
-$("statApps").textContent=as.size;
-
-}catch(error){
-
-console.log(error);
-
-}
-
-}
+/* إغلاق النافذة عند الضغط خارجها */
+$("jobModal").addEventListener("click",event=>{
+  if(event.target === $("jobModal")){
+    closeModal();
+  }
+});
 
 
-/* بدء التشغيل */
-
-handleGoogleResult();
-
-loadJobs(false);
+/* تشغيل الصفحة */
+loadPublicJobs();
 
 </script>
-
 </body>
 </html>
